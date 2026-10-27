@@ -12,7 +12,7 @@ flowchart TD
   F --> D
   M --> D
   V --> D
-  D --> N[SwiftUI or Jetpack Compose project]
+  D --> N[Explicit SwiftUI, Compose or Expo project]
   P[Authored motion recipes] --> N
   E[Connected Rive editor / supplied asset] --> I[Verified export and binding contract]
   I --> N
@@ -24,6 +24,13 @@ flowchart TD
 The [setup and focused skills](../README.md#skills), [portable reviewer profiles](agents.md) and [cross-platform client installer](clients.md) organize the agent's work. Figma and Rive are external client connections; the mobile server reports those boundaries without claiming connectivity. `scripts/sync-agent-context.mjs` preserves manual instructions while linking a canonical project context. None of these instruction files are an autonomous background workflow engine.
 
 `server.ts` defines the MCP contract. `store.ts` persists app references, owned media records, flow annotations and refresh metadata. `awards.ts` and `google-awards.ts` fetch explicitly bounded official listings. `media.ts` validates/imports files and extracts video study frames. `recipes.ts` supplies authored native examples with platform prerequisites. `mobbin.ts` is an account-connected live provider; its results are not stored in SQLite. `mobbin-login.ts` owns the explicit user sign-in workflow.
+
+`project-target.ts` validates supported OS/stack pairs and describes actual code
+capabilities. `brief.ts` shares bounded reference/flow assembly between legacy V1
+native briefs and explicit-target V2 briefs. `review-packet.ts` dispatches V1/V2
+inputs through the same bounded snapshot path. Expo source is copied for review,
+not executed. Native recipes remain SwiftUI/Compose-only; Expo effects use the
+project's compatible installed animation stack. No saved capture stack is inferred.
 
 The design keeps observed metadata, user annotations, inferred interpretations and authored code distinct. Screenshots have no timing evidence. A selected video interval is not a measured transition duration. Haptics and original spring/easing values remain unknown unless new evidence can establish them. There is deliberately no single similarity or "award quality" score. Native build/render verification is a later app-project operation.
 

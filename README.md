@@ -4,15 +4,32 @@
 
 **From inspiration to a native app you can actually inspect.**
 
-A mobile design toolkit for **Claude Code and Codex**: reference research, purposeful visual systems, **SwiftUI / Jetpack Compose** implementation, independent reviews and explicit UX/performance evidence.
+A mobile design toolkit for **Claude Code and Codex**: reference research, purposeful visual systems, **SwiftUI / Jetpack Compose / Expo** implementation, independent reviews and explicit UX/performance evidence.
 
 > **For noncommercial studies, learning and research.** Original code uses the [Noncommercial Study License](LICENSE). Marked Apache-2.0 files retain their permissions. No runtime license locks. [Rights and scope](docs/usage-rights.md).
 
-**8 skills · 7 reviewer profiles · 17 MCP tools · Windows / macOS / Linux**
+**10 skills · 7 reviewer profiles · 18 MCP tools · Windows / macOS / Linux**
 
 [See the native comparison](#a-small-app-two-design-approaches) · [Usage, commands and triggers](docs/usage.md) · [Install for your client](docs/clients.md) · [Explore the workflow](docs/workflow.md)
 
 This is an early working toolkit. It supports an agent's design work; it does not certify award quality, collect native frame profiles or turn one screenshot into a complete app.
+
+## Original iOS and Expo studies
+
+<table>
+<tr><th>Palette · colour editing</th><th>Passage · day planning</th><th>Folio · reading queue</th></tr>
+<tr>
+<td><img src="examples/palette-ios/evidence/palette-edit.gif" width="250" alt="Actual iOS colour-editor expansion and return." /></td>
+<td><img src="examples/passage-ios/evidence/passage-sheet.gif" width="250" alt="Actual iOS time-sheet editing, cancellation and save." /></td>
+<td><img src="examples/expo-study/evidence/folio-queue.gif" width="250" alt="Actual Expo iOS reading, status feedback and queue reordering." /></td>
+</tr>
+</table>
+
+Two standalone SwiftUI apps demonstrate editing, native reordering, undo,
+state-backed feedback and SVG export. **Folio** adds an original Expo / React Native
+reading queue. Each app includes a baseline/refined treatment of the same task
+and content. [Open the studies and motion gallery](docs/studies.md) for source,
+run instructions, actual captures and verification limits.
 
 ## A small app, two design approaches
 
@@ -94,6 +111,8 @@ The app's existing native themes and components remain authoritative. Review sna
 |---|---|
 | [mobile-setup](skills/mobile-setup/SKILL.md) | Short initial interview, project scope/style and a durable preparation record |
 | [mobile-design](skills/mobile-design/SKILL.md) | Reference-led native design, independent review and final UX/performance loops |
+| [mobile-expo](skills/mobile-expo/SKILL.md) | Design, audit and refine the actual Expo / React Native project |
+| [mobile-quality](skills/mobile-quality/SKILL.md) | Review hierarchy, task actions, typography, recovery and native accessibility |
 | [mobile-project-docs](skills/mobile-project-docs/SKILL.md) | Useful READMEs and consistent AGENTS.md/CLAUDE.md with one canonical project context |
 | [mobile-design-spec](skills/mobile-design-spec/SKILL.md) | Implementation-ready task/state, visual-system and motion contracts |
 | [mobile-design-drift](skills/mobile-design-drift/SKILL.md) | Evidence-based consistency audit across decisions, source, renders and docs |
@@ -109,7 +128,7 @@ node scripts/install-workflow.mjs --client both --scope user
 
 It uses real copies without symlink privileges, preserves unmanaged/modified destinations, and does not change permissions, models or account connections. See [client options](docs/clients.md) for per-project installation and update behavior. Start with `$mobile-setup` in Codex or `/mobile-setup` in Claude Code. The [reviewer profiles](docs/agents.md) are used on relevant evidence in fresh contexts; they do not run merely because they are installed.
 
-The mobile server still exposes 17 tools. Figma and Rive are optional external client connections, documented in [Figma](docs/figma.md) and [Rive](docs/rive.md). Read the [motion pipeline](docs/motion.md) for how references become native code or actual Rive assets and verified app behavior.
+The mobile server exposes 18 tools. Figma and Rive are optional external client connections, documented in [Figma](docs/figma.md) and [Rive](docs/rive.md). Read the [motion pipeline](docs/motion.md) for how references become native code or actual Rive assets and verified app behavior.
 
 ## MCP tools
 
@@ -124,7 +143,8 @@ The mobile server still exposes 17 tools. Figma and Rive are optional external c
 | `analyze_transition` | Extract time-indexed review frames; reuse valid cached studies |
 | `build_design_review_packet` | Snapshot bounded local design evidence for independent review |
 | `list_motion_recipes`, `build_motion_recipe` | SwiftUI/Compose examples with explicit timing and reduced-motion behavior |
-| `create_mobile_brief` | Organize references, flows, platform adaptations and evidence gaps |
+| `create_mobile_brief` | Legacy native V1 brief |
+| `create_project_brief` | Explicit OS/stack V2 brief, including Expo / React Native |
 | `mobbin_search_screens` | Live official REST search, with its own account entitlement |
 | `mobbin_list_tools`, `mobbin_call` | Discover and call explicitly read-only official MCP tools |
 

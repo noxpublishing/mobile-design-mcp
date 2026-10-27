@@ -1,4 +1,4 @@
-node_modules/
+node_modules
 dist/
 .env*
 !.env.example
@@ -21,3 +21,6 @@ xcuserdata/
 *.xcarchive
 *.ipa
 .build/
+.expo/
+/examples/expo-study/ios/
+/examples/expo-study/android/

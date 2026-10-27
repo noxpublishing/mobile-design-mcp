@@ -1,0 +1,14 @@
+{
+  "schema": "mobile-design-review-v2",
+  "revision": "replace-with-the-app-build-or-revision",
+  "scope": "flow",
+  "task": "Open an item, return to the queue and change its position",
+  "entryContext": "The reading queue after launching the app",
+  "target": { "platform": "ios", "implementationStack": "expo-react-native" },
+  "device": { "name": "replace-with-device", "os": "replace-with-version", "textScale": 1 },
+  "direction": "Replace with the accepted app direction",
+  "designSystemSources": ["src/theme.ts", "src/QueueScreen.tsx"],
+  "criteria": ["Navigation returns to the same queue state; accessible actions can reorder items"],
+  "evidence": [],
+  "gaps": ["Template only: select actual source files and revision-linked native captures inside the app project"]
+}

@@ -22,7 +22,9 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo timeout 180s apt-get update -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20
-          sudo timeout 180s apt-get install -y ffmpeg
+          sudo timeout 180s apt-get install -y --no-install-recommends -o Acquire::Retries=1 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20 ffmpeg
+          ffmpeg -hide_banner -version
+          ffprobe -hide_banner -version
       - name: Install media tools (macOS)
         if: runner.os == 'macOS'
         run: brew install ffmpeg

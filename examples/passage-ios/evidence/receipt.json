@@ -1,0 +1,176 @@
+{
+  "schema": "mobile-study-evidence-v1",
+  "date": "2026-10-27",
+  "revision": "source-sha256:d91adfb5c6d89d655ae27b1e707ecba3d86d7eeddff48990463e3c271e9afbbe",
+  "sourceFiles": [
+    {
+      "path": "Passage/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      "sha256": "dbaa090a1dc2c9b3a8ea22c42e0e6ec46310f1bf7dae7ad3ca7663c9f098499a"
+    },
+    {
+      "path": "Passage/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "sha256": "dc220e531918749f1e39e75f9f189f97f739cd96e0b71a38b72025f45d48fa00"
+    },
+    {
+      "path": "Passage/Assets.xcassets/Contents.json",
+      "sha256": "197937c7b50c8e1f4690e640009724cb0e02bded3f8de36c8f6eb5aa2903a6b5"
+    },
+    {
+      "path": "Passage/Itinerary.swift",
+      "sha256": "ea51d3100f753c4100dd33415153e16fe93c1c6d34c167e5c639f251b2b2dc18"
+    },
+    {
+      "path": "Passage/ItineraryStore.swift",
+      "sha256": "a280b9f897e1adaa03a24826da6c0aa33c91623010225c2a683ec727564ad88e"
+    },
+    {
+      "path": "Passage/ItineraryView.swift",
+      "sha256": "8e377831b025da186a6c6400320d54ca612aba728e67f8ffc37b54235fb832a9"
+    },
+    {
+      "path": "Passage/PassageApp.swift",
+      "sha256": "5679aa4775382b3e094a2611184a75af4b8c0c4d67757e67a4da122b0a4ebfb8"
+    },
+    {
+      "path": "Passage/StopDetail.swift",
+      "sha256": "42e7bd5789193ca479dcba7610b89ae55dcf1bef3d6957ec4c15184e55589e4e"
+    },
+    {
+      "path": "Passage/StudyTheme.swift",
+      "sha256": "78db8e660a3cfb0819b974404f12040fa45a33f993f6ec11ead50ca766e3bd82"
+    },
+    {
+      "path": "Passage.xcodeproj/project.pbxproj",
+      "sha256": "36472b220a24a83a9d9b501fa8865a888a0a1acbb744f2d6c93e99db7d80a639"
+    },
+    {
+      "path": "Passage.xcodeproj/xcshareddata/xcschemes/Passage.xcscheme",
+      "sha256": "21d86b0b67360f32ad622ccac1bc42a5bf739c090e2e5507e93f35b53651c2ba"
+    },
+    {
+      "path": "PassageTests/ItineraryStateTests.swift",
+      "sha256": "26710ac55eeeaccd07c302515fe6add7e2435a266ba7c98d34e0fd1201e9fe49"
+    },
+    {
+      "path": "PassageUITests/PassageJourneyTests.swift",
+      "sha256": "8efdca00c202c7afac03296a2b5e9e816158d2143e0cb44ae5417fc830cc3e5a"
+    }
+  ],
+  "device": {
+    "model": "iPhone 17 Pro simulator",
+    "os": "iOS 26.2",
+    "xcode": "26.2"
+  },
+  "nativeChecks": {
+    "modelTestsPassed": 4,
+    "uiJourneysPassed": 3,
+    "darkAccessibilityExtraLargeReachabilityPassed": true
+  },
+  "media": [
+    {
+      "path": "passage-baseline.png",
+      "sha256": "87d4ca2ff555bb012134ba3c4089fe066e01e22d8705f4ea0163f69ff05c8935",
+      "bytes": 267902,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "passage-conflict.png",
+      "sha256": "901d7b4383a3480b1236e23d65ac51723654c9aa1b47b135d22de0519cb89101",
+      "bytes": 261950,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "passage-dark-large.png",
+      "sha256": "e679e5b9f3263cee005eb37779fd37e76df2cfc42b8004ec1bf6b3b4c65743b7",
+      "bytes": 240172,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "dark",
+        "textSizeCategory": "accessibility-extra-large",
+        "textScale": null
+      }
+    },
+    {
+      "path": "passage-refined.png",
+      "sha256": "77ca72f050ff2a1595c8ba28a7ec56a5098fc78f043a3a73d8cc5358641843c9",
+      "bytes": 192285,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "passage-reorder.gif",
+      "sha256": "879ae911d4b33b7c1b9ae412876ec6a879cfd3749577b17c1050c729cc9eb634",
+      "bytes": 348311,
+      "treatment": "trimmed, resized native screen recording; GIF sampled at 12 fps",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "passage-sheet.gif",
+      "sha256": "5a324a0e5dbec075604c5aa926d3f4e0fd7c37fdda5ba060590cc48d6bc7b292",
+      "bytes": 705799,
+      "treatment": "trimmed, resized native screen recording; GIF sampled at 12 fps",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "passage-sheet.mp4",
+      "sha256": "8f4ebbe9ea5fcbf33327610eb8f471b6eb5a6409813cf1f33931e02107caa42f",
+      "bytes": 272408,
+      "treatment": "trimmed native screen recording, encoded at 600px width",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "passage-time-sheet.png",
+      "sha256": "28cb09d0c25431cc887d7d46d08c83f9bb1715b52445012e63727cb5bd66e6a0",
+      "bytes": 395943,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    }
+  ],
+  "limitations": [
+    "Simulator execution, not physical-device acceptance.",
+    "Authored baseline/refined treatments share content and tasks; no independent UX improvement claim.",
+    "Animation settings are authored; media encoding rate is not a native frame-performance measurement.",
+    "Raw captures and result bundles remain local; the published excerpts are derived from those runs."
+  ],
+  "excerptSource": {
+    "rawVideoSha256": "88eea177a48fce0777e90fb4de08f3e23cd8addd3849003402d9d597a1847d0b",
+    "startSeconds": 18,
+    "durationSeconds": 9
+  },
+  "additionalExcerpt": {
+    "path": "passage-reorder.gif",
+    "rawVideoSha256": "88eea177a48fce0777e90fb4de08f3e23cd8addd3849003402d9d597a1847d0b",
+    "startSeconds": 31,
+    "durationSeconds": 9
+  }
+}

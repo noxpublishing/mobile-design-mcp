@@ -11,3 +11,7 @@ web imitation. For third-party animation check pinned runtime/API generation,
 initialization, resource ownership and load failures. Do not describe source review
 as native compilation or device execution. Report exact inspected source/runtime
 evidence, concrete incompatibilities and unverified build behavior.
+
+## Explicit project targets
+
+Identify OS and implementation stack separately. For Expo inspect the actual SDK/navigation/native-module constraints and platform lifecycle; do not infer SwiftUI from iOS or Compose from Android. Missing native execution remains a gap.

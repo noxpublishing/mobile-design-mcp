@@ -69,3 +69,7 @@ accepted or invalidated status. Cite replacement evidence to close a fix.
 Follow the [shared completion contract](workflow.md); do not call missing native
 builds, semantics, user observations or profiles a passing result. A provisional
 two-round correction budget triggers a decision, not automatic approval.
+
+## Explicit project targets
+
+For Expo review name both OS and implementation stack in the selected evidence. Inspect actual TSX/theme snapshots for consistency; keep discoverability withholding intact. The existing lenses and finding states apply without another review engine.

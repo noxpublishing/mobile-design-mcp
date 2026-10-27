@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600"><title>Palette colour composition</title>
+<clipPath id="column-0"><rect x="0" y="0" width="200" height="600"/></clipPath>
+<g clip-path="url(#column-0)"><rect x="0" y="0" width="200" height="600" fill="#C4523B"/><circle cx="0.0" cy="0" r="150" fill="#33403D" transform="translate(83.333333 533.333333)"/></g>
+<clipPath id="column-1"><rect x="200" y="0" width="200" height="600"/></clipPath>
+<g clip-path="url(#column-1)"><rect x="200" y="0" width="200" height="600" fill="#E8AB40"/><circle cx="200.0" cy="0" r="150" fill="#D6A696" transform="translate(83.333333 533.333333)"/></g>
+<clipPath id="column-2"><rect x="400" y="0" width="200" height="600"/></clipPath>
+<g clip-path="url(#column-2)"><rect x="400" y="0" width="200" height="600" fill="#33403D"/><circle cx="400.0" cy="0" r="150" fill="#F0E8D4" transform="translate(83.333333 533.333333)"/></g>
+<clipPath id="column-3"><rect x="600" y="0" width="200" height="600"/></clipPath>
+<g clip-path="url(#column-3)"><rect x="600" y="0" width="200" height="600" fill="#D6A696"/><circle cx="600.0" cy="0" r="150" fill="#C4523B" transform="translate(83.333333 533.333333)"/></g>
+<clipPath id="column-4"><rect x="800" y="0" width="200" height="600"/></clipPath>
+<g clip-path="url(#column-4)"><rect x="800" y="0" width="200" height="600" fill="#F0E8D4"/><circle cx="800.0" cy="0" r="150" fill="#E8AB40" transform="translate(83.333333 533.333333)"/></g>
+</svg>

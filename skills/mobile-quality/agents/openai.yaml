@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile UI Quality"
+  short_description: "Refine mobile hierarchy, tasks and motion"
+  default_prompt: "Use $mobile-quality to review this mobile flow against its direction and actual user task."

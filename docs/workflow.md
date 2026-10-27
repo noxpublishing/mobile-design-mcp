@@ -3,6 +3,13 @@
 
 This is the shared completion and review contract for the native-design and showcase skills. It adapts Elephant–Goldfish context separation to iOS/SwiftUI and Android/Jetpack Compose design.
 
+The same contract applies to Expo/React Native through [Expo mode](expo.md).
+Identify OS and implementation stack separately; use the actual app stack.
+`create_project_brief` requires an explicit supported target and returns a V2
+brief. Check the connected capability report and returned target/version.
+Legacy `create_mobile_brief` remains native-only V1. Historical captures without
+stack provenance remain unknown. [Mobile quality](mobile-quality.md) reuses this workflow and finding states.
+
 ## Ownership and intake
 
 For a new project use `mobile-setup` to reuse known facts, ask a short targeted interview and maintain one durable project record. Resume it instead of repeating setup on every task. `mobile-project-docs` maintains factual READMEs and thin AGENTS.md/CLAUDE.md entry points; `mobile-design-spec` expands accepted decisions when needed. See [client installation](clients.md) and [specialist reviewer dispatch](agents.md). These are focused working modes, not additional mandatory gates for every edit.
@@ -66,6 +73,12 @@ Routine fixes within the agreed direction are authorized work. Bring changed sco
 ## Review packets and findings
 
 Use `build_design_review_packet` with a project-local `mobile-design-review-v1` manifest, or assemble an equivalent bounded packet when that tool is unavailable. See [example manifest](../examples/design-review.json). The tool snapshots local files, verifies declared revision/hash consistency and keeps packets separate from the native source.
+
+Explicit-target work uses `mobile-design-review-v2`, replacing `platform` with
+required `target`. It produces a `mobile-design-packet-v2`; V1 stays V1. See the
+[Expo template](../examples/design-review-expo.json). Selected TS/TSX/JS/JSX
+sources are permitted for V2 Expo consistency, never executed or import-crawled.
+Old readers may reject V2; preserve inputs rather than erase stack identity.
 
 - Consistency: accepted direction, canonical source snapshots, changed screens and representative peer components.
 - Discoverability: realistic entry context, user task and target screens. Omit the solution rationale, design rules and reference examples that reveal the intended answer.

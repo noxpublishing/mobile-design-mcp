@@ -11,10 +11,16 @@ import { analyzeTransition, importRecording, probeVideo, recordingPreview } from
 import { buildMotionRecipe, listMotionRecipes } from './recipes.js';
 import { callMobbinTool, dataRoot, getMobbinStatus, listMobbinTools, searchMobbinScreens } from './mobbin.js';
 import { buildDesignReviewPacket, reviewMode } from './review-packet.js';
-import type { Flow, Platform, ReferenceApp } from './types.js';
+import { createBrief } from './brief.js';
+import { projectCapabilities, projectTargetSchema } from './project-target.js';
+import type { Flow, ReferenceApp } from './types.js';
 const exec = promisify(execFile);
 const platform = z.enum(['ios','android']);
 const tags = z.array(z.string().trim().min(1).max(80)).max(30).default([]);
+const briefArguments={
+  goal:z.string().trim().min(1).max(3000),appIds:z.array(z.string()).max(8).default([]),flowIds:z.array(z.string()).max(8).default([]),
+  constraints:z.array(z.string().max(500)).max(20).default([]),
+};
 const ro = {readOnlyHint:true,destructiveHint:false,idempotentHint:true,openWorldHint:false};
 const network = {...ro,idempotentHint:false,openWorldHint:true};
 const write = {...ro,readOnlyHint:false,idempotentHint:false};
@@ -32,13 +38,13 @@ const guard = <T extends object>(fn:(args:T)=>Promise<unknown>|unknown) => async
 
 export function createMobileServer(root=dataRoot()) {
   const store=new Store(root);
-  const server=new McpServer({name:'mobile-design-mcp',version:'0.1.0'});
+  const server=new McpServer({name:'mobile-design-mcp',version:'0.2.0'});
   server.tool('get_provider_status','Inspect this local library and configured optional providers. No remote account checks.',{},ro,guard(async()=>{
     const available=await Promise.all(['ffmpeg','ffprobe','adb','xcrun'].map(async name=>{
       try{await exec(name,name==='ffmpeg'||name==='ffprobe'?['-version']:['--version'],{timeout:3000,maxBuffer:10000});return [name,true];}catch{return [name,false];}
     }));
     return {counts:store.counts(),storage:root,platforms:['ios','android'],nativeStacks:{ios:'SwiftUI',android:'Jetpack Compose'},
-      mobbin:getMobbinStatus(root),dependencies:Object.fromEntries(available),
+      capabilities:projectCapabilities,mobbin:getMobbinStatus(root),dependencies:Object.fromEntries(available),
       capture:{localImport:true,liveDeviceAutomation:false,iosSimulatorHost:'macOS with Xcode required; import captures here'},
       awards:{apple:store.getMeta('refresh:apple'),googlePlay:store.getMeta('refresh:google')},
       awwwards:{connection:'external MCP or web research',availability:'not-checked-by-this-server'},
@@ -129,31 +135,11 @@ export function createMobileServer(root=dataRoot()) {
     pattern:z.enum(['bottom-sheet','shared-element','success-feedback']),platform,durationMs:z.number().min(100).max(1200).optional(),reducedMotion:z.boolean().default(false),
   },ro,guard(args=>buildMotionRecipe(args)));
   server.tool('create_mobile_brief','Synthesize a cited native-app direction from selected local references and flow evidence. Missing motion and visual evidence stay explicit.',{
-    goal:z.string().trim().min(1).max(3000),platform,appIds:z.array(z.string()).max(8).default([]),flowIds:z.array(z.string()).max(8).default([]),
-    constraints:z.array(z.string().max(500)).max(20).default([]),
-  },ro,guard(args=>{
-    const apps=args.appIds.map(id=>{const app=store.getApp(id);if(!app)throw new Error('Unknown app: '+id);return app;});
-    const flows=args.flowIds.map(id=>{const flow=store.getFlow(id);if(!flow)throw new Error('Unknown flow: '+id);return flow;});
-    const crossPlatform=apps.filter(app=>!app.platforms.includes(args.platform)).map(app=>app.id);
-    const crossPlatformFlows=flows.filter(flow=>flow.platform!==args.platform).map(flow=>flow.id);
-    const gaps:string[]=[];
-    if(!apps.length)gaps.push('No selected reference apps.');if(!flows.length)gaps.push('No recorded reference journeys.');
-    if(crossPlatform.length)gaps.push('Some app references are from another platform; adapt navigation and interaction conventions explicitly.');
-    if(crossPlatformFlows.length)gaps.push('Selected flows from another platform require adaptation and do not validate target-platform interactions: '+crossPlatformFlows.join(', '));
-    gaps.push('Palette, typography, easing, spring constants, gestures and haptics are not recovered from award metadata.');
-    const stack=args.platform==='ios'?'SwiftUI':'Jetpack Compose';
-    const brief={schema:'mobile-design-brief-v1',goal:args.goal,platform:args.platform,stack,constraints:args.constraints,
-      references:apps.map(app=>({id:app.id,name:app.name,platforms:app.platforms,awards:app.awards,source:app.source})),
-      flows,crossPlatformReferenceIds:crossPlatform,crossPlatformFlowIds:crossPlatformFlows,evidenceGaps:gaps,
-      inspirationResearch:{mobbin:'not-attested-by-this-brief',awwwards:'not-attested-by-this-brief'},
-      implementation:{navigation:'Choose the native navigation model for the actual tasks.',motion:'Use observed clips where available; label new recipes as authored.',
-        accessibility:['Dynamic text and accessible labels','Platform touch targets and insets','Visible loading, error and empty states where relevant','Reduced-motion alternative'],
-        verification:'Render and test on the target simulator/device; metadata and generated code do not verify UI quality.'},
-      completion:{design:'unverified',ux:'unverified',performance:'unmeasured',contract:'docs/workflow.md#completion'},
-      showcase:{optional:true,ready:false,requires:'Verified app design, UX review and measured native performance for the identified revision, plus final app media. Accepted gaps are a qualified handoff, not a verified pass.'}};
-    const markdown=[`# ${stack} app direction`,args.goal,'',...apps.map(app=>`- Reference: ${app.name} — ${app.source.url}`),'','Evidence gaps:',...gaps.map(g=>'- '+g),'',...args.constraints.map(c=>'- Constraint: '+c)].join('\n');
-    return {brief,markdown};
-  }));
+    ...briefArguments,platform,
+  },ro,guard(args=>createBrief(store,args,{platform:args.platform,implementationStack:args.platform==='ios'?'swiftui':'jetpack-compose'},true)));
+  server.tool('create_project_brief','Prepare a cited design direction for an explicit SwiftUI, Compose or Expo target. Does not infer capture stack or generate Expo motion recipes.',{
+    ...briefArguments,target:projectTargetSchema,
+  },ro,guard(args=>createBrief(store,args,args.target)));
   server.tool('mobbin_search_screens','Query the official Mobbin REST screen search live. Requires your API key; current native filter supports iOS, not Android. Results are not persisted.',{
     query:z.string().trim().min(1).max(500),platform,limit:z.number().int().min(1).max(20).default(6),
   },network,guard(args=>searchMobbinScreens(args)));

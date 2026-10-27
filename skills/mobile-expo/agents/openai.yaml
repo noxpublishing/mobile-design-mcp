@@ -1,0 +1,4 @@
+interface:
+  display_name: "Expo Mobile Design"
+  short_description: "Review and refine real Expo app flows"
+  default_prompt: "Use $mobile-expo to inspect this Expo project and improve the selected flow."

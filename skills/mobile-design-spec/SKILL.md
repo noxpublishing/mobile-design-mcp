@@ -15,3 +15,7 @@ Record reference provenance and what was observed versus authored. Use `mobile-f
 Define observable acceptance criteria and the evidence needed to check them, the relevant reviewer lenses and the build/capture/profiling path. Leave thresholds requiring a device decision explicitly unresolved. Separate implementation, UX review and performance measurement. Link implementation tasks to the affected native source and evidence rather than treating a spec as a completed app.
 
 Keep unresolved decisions visible. Continue routine authorized work within accepted direction; ask only for consequential changes of scope or taste. Update the specification when the implemented contract changes and invalidate affected review evidence. Do not make a new speculative product requirement appear accepted through documentation.
+
+## Explicit project targets
+
+Carry OS and actual implementation stack separately through the specification. Use the explicit-target and artifact-version boundaries in [Expo contracts](../../docs/expo.md); old captures keep unknown stack provenance.

@@ -441,7 +441,7 @@ export function buildMotionRecipe(input: MotionRecipeInput): MotionRecipeResult 
         : 'durationMs is an authored baseline clamped to 100–1200 ms, not a measured app value. Reduced motion skips spatial animation; system settings may further alter timing.',
     },
     assumptions: [
-      'Standalone integration example, not a reconstruction of any referenced app. Copy each recipe into its own file and adapt content, state ownership and localization.',
+      'Standalone integration example. Place each recipe in its own file and connect the app content, state ownership and localization.',
       ios
         ? 'SwiftUI on iOS 16 or later; place the view in an existing app. Read both the app preference and accessibilityReduceMotion.'
         : 'Android API 26 or later with a compatible Compose BOM and Material 3; the host Activity already supplies MaterialTheme. The settings observer tracks the system animator-duration setting.',

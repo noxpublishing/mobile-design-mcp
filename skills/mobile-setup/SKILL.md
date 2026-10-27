@@ -13,7 +13,7 @@ Read the [shared workflow](../../docs/workflow.md) and the existing project inst
 Reuse information already supplied. Ask at most three concise questions together, with a recommended default where useful. Start with the unresolved items that affect the design most:
 
 - Product, intended users, their main task and the desired outcome.
-- Target platforms, required screens/flows, MVP boundary and explicit exclusions.
+- Target OS and actual implementation stack, required screens/flows, agreed task boundary and explicit exclusions.
 - Brand, preferred feeling, existing references, constraints and freedom to propose a direction.
 
 Then resolve only consequential gaps: content and languages, accessibility needs, existing theme/components, motion ambition, target devices, available Figma/Mobbin/Rive access, timeline and depth of review. Do not make account connection or a long questionnaire a prerequisite for useful progress. An unknown may remain an explicit assumption if the task can proceed. A design direction requiring the user's choice remains proposed until selected or delegated.

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, rm, symlink, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, rm, stat, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { buildDesignReviewPacket } from '../dist/review-packet.js';
@@ -45,5 +45,48 @@ test('missing runtime evidence is inconclusive, not a performance pass',async()=
  const f=await fixture();try{
   const result=await buildDesignReviewPacket({...f,outputDirectory:join(f.root,'packet'),mode:'performance'});
   assert.equal(result.status,'inconclusive');assert.ok(result.gaps.some(g=>g.includes('profile')));
+ }finally{await rm(f.root,{recursive:true,force:true});}
+});
+test('V2 preserves explicit Expo target and snapshots real TSX without evaluating it',async()=>{
+ const f=await fixture();try{
+  const source='throw new Error("Snapshots must never run"); export const Screen = () => <View />;';
+  await writeFile(join(f.root,'Screen.tsx'),source);f.manifest.designSystemSources=['Screen.tsx'];
+  await writeFile(f.manifestPath,JSON.stringify(f.manifest));
+  await assert.rejects(buildDesignReviewPacket({...f,outputDirectory:join(f.root,'old-packet'),mode:'consistency'}),/Unsupported design-system/);
+  const {platform,...base}=f.manifest;
+  const target={platform,implementationStack:'expo-react-native'};
+  const manifest={...base,schema:'mobile-design-review-v2',target};
+  await writeFile(f.manifestPath,JSON.stringify(manifest));
+  const result=await buildDesignReviewPacket({...f,outputDirectory:join(f.root,'packet'),mode:'consistency'});
+  const packet=JSON.parse(await readFile(result.packetPath,'utf8'));
+  assert.equal(packet.schema,'mobile-design-packet-v2');assert.deepEqual(packet.target,target);
+  assert.equal('platform' in packet,false);assert.equal(packet.outcome,'not-reviewed');
+  assert.equal(await readFile(join(result.outputDirectory,packet.designSystem[0].path),'utf8'),source);
+  assert.equal(packet.designSystem[0].sha256.length,64);
+  manifest.evidence.push({...manifest.evidence[0],id:'reference',role:'reference'});
+  await writeFile(f.manifestPath,JSON.stringify(manifest));
+  const blind=await buildDesignReviewPacket({...f,outputDirectory:join(f.root,'blind'),mode:'discoverability'});
+  const withheld=JSON.parse(await readFile(blind.packetPath,'utf8'));
+  assert.equal(withheld.direction,undefined);assert.equal(withheld.criteria,undefined);assert.equal(withheld.designSystem,undefined);
+  assert.equal(withheld.evidence.length,1);assert.deepEqual(withheld.target,target);
+ }finally{await rm(f.root,{recursive:true,force:true});}
+});
+test('V2 rejects invalid versions, pairs and native TSX while retaining source bounds',async()=>{
+ const f=await fixture();try{
+  await writeFile(join(f.root,'Screen.tsx'),'export const color = "blue";');
+  const {platform,...base}=f.manifest;
+  const valid={...base,schema:'mobile-design-review-v2',target:{platform,implementationStack:'expo-react-native'},designSystemSources:['Screen.tsx']};
+  const run=()=>buildDesignReviewPacket({...f,outputDirectory:join(f.root,'packet'),mode:'consistency'});
+  for(const manifest of [
+   {...valid,schema:'mobile-design-review-v3'},
+   {...valid,target:{platform:'android',implementationStack:'swiftui'}},
+   {...valid,target:{platform:'ios',implementationStack:'swiftui'}},
+   {...valid,platform:'ios'},
+  ]){
+   await writeFile(f.manifestPath,JSON.stringify(manifest));await assert.rejects(run());
+   await assert.rejects(stat(join(f.root,'packet')),/ENOENT/);
+  }
+  await writeFile(f.manifestPath,JSON.stringify(valid));await writeFile(join(f.root,'Screen.tsx'),'x'.repeat(128*1024+1));
+  await assert.rejects(run(),/128 KiB/);await assert.rejects(stat(join(f.root,'packet')),/ENOENT/);
  }finally{await rm(f.root,{recursive:true,force:true});}
 });

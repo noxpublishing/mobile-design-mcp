@@ -17,3 +17,7 @@ Download only the assets needed for the authorized task through the connected se
 Compare fresh app renders with the selected Figma state at relevant target sizes, plus enlarged text where affected. Record intentional platform differences. Figma prototype behavior is not proof of the implemented app's UX or native frame performance.
 
 Writing to Figma requires an explicit task to edit the identified file/scope, suitable access and actual write tooling. Reading a reference is not authorization to modify the original. For an authorized write, inspect the target first, use the available official workflow, then read back the changed nodes. Avoid claiming bidirectional sync: record each actual update and resolve conflicts deliberately.
+
+## Explicit project targets
+
+Translate the selected design into the actual project stack. For Expo use [Expo contracts](../../docs/expo.md), preserving SDK/navigation and existing theme ownership rather than inferring SwiftUI from iOS.

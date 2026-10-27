@@ -23,6 +23,9 @@ try {
  await call('get_app',{id:ios.apps[0].id});
  for(const platform of ['ios','android'])for(const pattern of ['bottom-sheet','shared-element','success-feedback'])await call('build_motion_recipe',{platform,pattern,reducedMotion:true});
  await call('create_mobile_brief',{goal:'Native habit tracking with clear progress and restrained motion',platform:'android',appIds:[android.apps[0].id]});
+ const target={platform:'ios',implementationStack:'expo-react-native'};
+ const explicit=await call('create_project_brief',{goal:'An original reading queue with clear return navigation',target});
+ assert.equal(explicit.brief.schema,'mobile-design-brief-v2');assert.deepEqual(explicit.brief.target,target);
  result.status='passed';result.stderr=stderr;
  await mkdir(new URL('../.artifacts/',import.meta.url),{recursive:true});
  await writeFile(new URL('../.artifacts/live-smoke.json',import.meta.url),JSON.stringify(result,null,2)+'\n');

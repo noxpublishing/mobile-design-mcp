@@ -1,0 +1,77 @@
+{
+  "schema": "mobile-design-review-v2",
+  "revision": "source-sha256:7bcdc7125e3e629d719d361208345d41637f29821e3de29a9289f3456f060d97",
+  "scope": "flow",
+  "task": "Read a note, change its status, reorder the queue and return after relaunch",
+  "entryContext": "Folio after launch with the four original notes",
+  "target": {
+    "platform": "ios",
+    "implementationStack": "expo-react-native"
+  },
+  "device": {
+    "name": "iPhone 17 Pro simulator",
+    "os": "iOS 26.2",
+    "textScale": 1
+  },
+  "direction": "An editorial queue with readable original notes, distinct read status and deliberate order",
+  "designSystemSources": [
+    "src/theme.ts",
+    "src/QueueScreen.tsx"
+  ],
+  "criteria": [
+    "Read status follows stable identity",
+    "A completed move persists and undo restores prior state",
+    "An interrupted held drag preserves order",
+    "Detail and return actions remain reachable with enlarged text"
+  ],
+  "evidence": [
+    {
+      "id": "folio-baseline",
+      "path": "evidence/folio-baseline.png",
+      "revision": "source-sha256:7bcdc7125e3e629d719d361208345d41637f29821e3de29a9289f3456f060d97",
+      "state": "folio baseline; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "14fbdbbcb036829c7026123b02b90a028624bb9e27a84d88d0b81d91456b2b8d"
+    },
+    {
+      "id": "folio-queue-recording",
+      "path": "evidence/folio-queue.mp4",
+      "revision": "source-sha256:7bcdc7125e3e629d719d361208345d41637f29821e3de29a9289f3456f060d97",
+      "state": "folio queue; light appearance, default text size",
+      "role": "implemented",
+      "kind": "recording",
+      "sha256": "434c54300d4c715e0057a8f2a74a8130fb53048c4b8b126a53f41ea118231d6a"
+    },
+    {
+      "id": "folio-read-detail",
+      "path": "evidence/folio-read-detail.png",
+      "revision": "source-sha256:7bcdc7125e3e629d719d361208345d41637f29821e3de29a9289f3456f060d97",
+      "state": "folio read detail; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "e4ef96a3a4542e78f24d396e3417d1101ca4ad5208faa8338d994ec5fa7ae60a"
+    },
+    {
+      "id": "folio-refined",
+      "path": "evidence/folio-refined.png",
+      "revision": "source-sha256:7bcdc7125e3e629d719d361208345d41637f29821e3de29a9289f3456f060d97",
+      "state": "folio refined; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "21c910beeec86f79a1536ae37e6663ec7f4e69f17b17d94f697128b20e63f488"
+    },
+    {
+      "id": "folio-reordered",
+      "path": "evidence/folio-reordered.png",
+      "revision": "source-sha256:7bcdc7125e3e629d719d361208345d41637f29821e3de29a9289f3456f060d97",
+      "state": "folio reordered; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "338fc7583be5821106538bda9a74801706242c4c0e3725c7fbbf19b591af3dea"
+    }
+  ],
+  "gaps": [
+    "No Android execution, physical-device acceptance, VoiceOver/TalkBack, representative user research or native frame profile is established."
+  ]
+}

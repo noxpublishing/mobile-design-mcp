@@ -1,4 +1,4 @@
 interface:
   display_name: "Mobile Motion"
-  short_description: "Build native motion and integrate authored Rive assets"
-  default_prompt: "Use $mobile-motion for this native mobile project."
+  short_description: "Native recipes, Expo motion and Rive integration"
+  default_prompt: "Use $mobile-motion for the actual stack in this mobile project."

@@ -30,3 +30,7 @@ Judge iOS and Android against the selected native interaction model, insets, nav
 ## Native performance
 
 Inspect runtime profiles and their run record, not screenshot similarity. Verify that before/after runs have comparable build, device, refresh rate, scenarios and conditions. Cite measured hitches/frame work or response delays and their user impact. Missing raw measurements are inconclusive. A performance fix that changes interaction needs UX rechecking.
+
+## Explicit project targets
+
+For explicit-target work retain the declared OS/stack and actual artifact version in the relevant review context. Consistency can inspect selected Expo TSX/theme source; discoverability still withholds implementation and solution rationale.

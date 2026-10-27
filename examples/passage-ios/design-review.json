@@ -1,0 +1,76 @@
+{
+  "schema": "mobile-design-review-v2",
+  "revision": "source-sha256:d91adfb5c6d89d655ae27b1e707ecba3d86d7eeddff48990463e3c271e9afbbe",
+  "scope": "flow",
+  "task": "Change an arrival time, reorder the plan and recover with undo",
+  "entryContext": "Passage built-in four-stop plan",
+  "target": {
+    "platform": "ios",
+    "implementationStack": "swiftui"
+  },
+  "device": {
+    "name": "iPhone 17 Pro simulator",
+    "os": "iOS 26.2",
+    "textScale": 1
+  },
+  "direction": "A readable day plan with explicit arrival times and visible scheduling conflicts",
+  "designSystemSources": [
+    "Passage/StudyTheme.swift",
+    "Passage/ItineraryView.swift"
+  ],
+  "criteria": [
+    "Cancel preserves the original arrival",
+    "Save commits a valid time and Undo restores it",
+    "Reordering retains times and exposes adjacent conflicts"
+  ],
+  "evidence": [
+    {
+      "id": "passage-baseline",
+      "path": "evidence/passage-baseline.png",
+      "revision": "source-sha256:d91adfb5c6d89d655ae27b1e707ecba3d86d7eeddff48990463e3c271e9afbbe",
+      "state": "passage baseline; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "87d4ca2ff555bb012134ba3c4089fe066e01e22d8705f4ea0163f69ff05c8935"
+    },
+    {
+      "id": "passage-conflict",
+      "path": "evidence/passage-conflict.png",
+      "revision": "source-sha256:d91adfb5c6d89d655ae27b1e707ecba3d86d7eeddff48990463e3c271e9afbbe",
+      "state": "passage conflict; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "901d7b4383a3480b1236e23d65ac51723654c9aa1b47b135d22de0519cb89101"
+    },
+    {
+      "id": "passage-refined",
+      "path": "evidence/passage-refined.png",
+      "revision": "source-sha256:d91adfb5c6d89d655ae27b1e707ecba3d86d7eeddff48990463e3c271e9afbbe",
+      "state": "passage refined; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "77ca72f050ff2a1595c8ba28a7ec56a5098fc78f043a3a73d8cc5358641843c9"
+    },
+    {
+      "id": "passage-sheet-recording",
+      "path": "evidence/passage-sheet.mp4",
+      "revision": "source-sha256:d91adfb5c6d89d655ae27b1e707ecba3d86d7eeddff48990463e3c271e9afbbe",
+      "state": "passage sheet; light appearance, default text size",
+      "role": "implemented",
+      "kind": "recording",
+      "sha256": "8f4ebbe9ea5fcbf33327610eb8f471b6eb5a6409813cf1f33931e02107caa42f"
+    },
+    {
+      "id": "passage-time-sheet",
+      "path": "evidence/passage-time-sheet.png",
+      "revision": "source-sha256:d91adfb5c6d89d655ae27b1e707ecba3d86d7eeddff48990463e3c271e9afbbe",
+      "state": "passage time sheet; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "28cb09d0c25431cc887d7d46d08c83f9bb1715b52445012e63727cb5bd66e6a0"
+    }
+  ],
+  "gaps": [
+    "No physical-device, VoiceOver, representative real-user or native performance result is established."
+  ]
+}

@@ -1,10 +1,15 @@
 ---
 name: mobile-motion
-description: Design, build and verify native mobile motion in SwiftUI or Jetpack Compose, or integrate and author Rive assets through available editor tools for interactive animated graphics.
+description: Implement and verify mobile motion in SwiftUI, Compose or the actual Expo/React Native stack, with optional Rive authoring/integration through available tools.
 license: See ../../LICENSE
 ---
 
 # Build purposeful mobile motion
+
+Identify OS and actual implementation stack separately. For Expo use
+[mobile-expo](../mobile-expo/SKILL.md) and its compatible installed React Native
+animation APIs. The MCP recipe tools emit only SwiftUI/Compose; do not reinterpret
+their output as Expo source. Preserve the common state/interruption contract.
 
 Use the selected direction, actual user task and [motion pipeline](../../docs/motion.md). Decide the rendering approach per effect. Native navigation, layout, sheets, gestures and simple feedback normally use platform APIs. Consider Rive for authored interactive illustrations or graphics whose stateful animation benefits from its editor/runtime. A mixed screen may use both. Respect an explicit engine choice and assess its integration cost; decorative ambition alone does not justify a new dependency.
 

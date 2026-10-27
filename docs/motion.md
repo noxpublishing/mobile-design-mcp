@@ -29,3 +29,7 @@ duration, and video does not establish input latency, original spring values or 
 
 See [Figma](figma.md), [Rive](rive.md), [reviewer dispatch](agents.md) and the
 [shared workflow](workflow.md). Missing build/editor/device evidence remains explicit.
+
+## Explicit project targets
+
+Expo uses the actual project-compatible React Native animation stack, following [Expo contracts](expo.md). The existing recipe generator remains SwiftUI/Compose-only. A runnable host exercising a similar interaction does not verify a different generated snippet.

@@ -9,6 +9,8 @@ Product, audience, priority task, intended outcome, content and languages.
 ## Scope
 
 Platforms, priority journeys/states, deliverables, exclusions and constraints.
+Record OS separately from SwiftUI, Jetpack Compose or Expo/React Native. Keep
+requested target separate from the unknown implementation stack of old captures.
 
 ## Direction
 
@@ -25,6 +27,8 @@ Record available and unavailable sources separately.
 
 Actual build commands and environment, capture path, target devices, UX criteria,
 profiling path and agreed performance criteria. Unknown or unrun checks remain so.
+Record the actual connected runtime capabilities and any partial installation;
+copied instructions do not attest that the server supports their target/version.
 
 ## Decisions and next action
 

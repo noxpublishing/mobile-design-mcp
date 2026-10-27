@@ -49,3 +49,7 @@ Compile, render and inspect actual native behavior, then collect comparable
 performance profiles for important scenarios. A `.riv` file or successful MCP call
 does not certify UX, accessibility or frame pacing. This toolkit has no native
 Rive runtime test or editor session verified yet.
+
+## Explicit project targets
+
+For Expo, confirm the compatible installed runtime and native build path using [Expo contracts](expo.md). A valid editor export is separate from runtime integration and native lifecycle/accessibility verification.

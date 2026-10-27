@@ -1,6 +1,6 @@
 ---
 name: mobile-design
-description: Design and implement native iOS apps in SwiftUI or Android apps in Jetpack Compose using app references, local recordings, flows, and motion recipes. Use for native mobile UI work and mobile design research; web showcases of completed apps belong to mobile-showcase.
+description: Design and implement SwiftUI, Jetpack Compose or Expo/React Native apps using references, local captures, explicit implementation targets and bounded reviews. Web showcases belong to mobile-showcase.
 license: Apache-2.0
 ---
 
@@ -16,6 +16,8 @@ Use these companion skills when installed, or read their linked instructions whe
 
 | Need | Mode |
 |---|---|
+| Expo/React Native audit, redesign or implementation | [mobile-expo](../mobile-expo/SKILL.md) |
+| Concrete mobile hierarchy, task and accessibility checks | [mobile-quality](../mobile-quality/SKILL.md) |
 | New project or consequential scope reset | [mobile-setup](../mobile-setup/SKILL.md): short interview and durable project record; reuse existing answers |
 | README and agent instructions | [mobile-project-docs](../mobile-project-docs/SKILL.md): factual contracts and canonical context behind AGENTS.md/CLAUDE.md |
 | Agreed direction needs an implementable contract | [mobile-design-spec](../mobile-design-spec/SKILL.md) |
@@ -27,7 +29,7 @@ Portable specialist reviewer profiles and fresh-context dispatch are defined in 
 
 ## Establish the target and available evidence
 
-Read the existing project and the user's brief first. Reuse their platform, stack, product purpose, audience, and required flows; ask only for consequential missing information. In this server, platform filters use `ios` and `android`. SwiftUI is the iOS implementation path; Jetpack Compose is the Android path. Support both when requested, with shared product intent and platform-appropriate interactions.
+Read the existing project and the user's brief first. Reuse their platform, stack, product purpose, audience, and required flows; ask only for consequential missing information. Platform filters use `ios` and `android`; the implementation stack is separately SwiftUI, Jetpack Compose or Expo/React Native. Use the actual project stack and the [target/capability contract](../../docs/expo.md). Native OS alone does not establish capture stack.
 
 If available, call `get_provider_status` to learn which sources and optional dependencies actually work. Use the connected tool schemas; the following names describe capabilities, not a guarantee that every provider is online:
 
@@ -37,8 +39,8 @@ If available, call `get_provider_status` to learn which sources and optional dep
 | Refresh official awards | `refresh_awards` | Current provider results may differ from the local catalog; retain source links and timestamps |
 | Study screenshots or recordings | `import_recording`, `list_recordings` | Import existing local files; no live device-capture API is assumed |
 | Describe a product journey | `create_flow`, `get_flow` | Ordered evidence with actions and optional clip ranges; distinguish observed steps from proposed ones |
-| Study and implement motion | `analyze_transition`, `list_motion_recipes`, `build_motion_recipe` | Read measurement limits; a recipe is implementation guidance, not recovered original source |
-| Synthesize the brief | `create_mobile_brief` | Use selected evidence and the user's goal; missing evidence stays visible |
+| Study and implement motion | `analyze_transition`, `list_motion_recipes`, `build_motion_recipe` | Read measurement limits; recipes are authored implementation guidance; report observations and unknowns explicitly |
+| Synthesize the brief | `create_project_brief`; legacy native `create_mobile_brief` | Validate the explicit target and returned V2 version; preserve legacy callers and missing evidence |
 | Prepare independent review | `build_design_review_packet` | A bounded local snapshot, not a completed review or runtime quality certificate |
 | Use an optional Mobbin connection | `mobbin_list_tools`, `mobbin_call` | Discover available tools and their schema first; availability and account access are not assumed |
 | Search official Mobbin REST | `mobbin_search_screens` | Separate account/API-key entitlement; its current native platform is iOS. Do not relabel results as Android. |
@@ -55,7 +57,7 @@ Inspect actual screenshots when available. For motion, import a local recording 
 
 Build the requested journey around the user's content and tasks. Cover the states that matter to that journey: navigation and return paths, loading/empty/error behavior, permissions, input validation, and success. Include only states relevant to the agreed scope. Use `create_flow` to associate reference steps with recordings; keep proposed app behavior clearly identified in the brief.
 
-State the direction before substantial UI work: platform, screen/flow scope, tokens and type hierarchy, navigation model, reusable components, motion intent, and which choices come from which references. `create_mobile_brief` can organize this; it does not replace product judgment or implement an app.
+State the direction before substantial UI work: platform, screen/flow scope, tokens and type hierarchy, navigation model, reusable components, motion intent, and which choices come from which references. `create_project_brief` can organize an explicit target; the legacy native `create_mobile_brief` remains available. Neither replaces product judgment or implements an app.
 
 For a substantial new direction, normally show two or three comparable treatments of the same key task and content, with references and trade-offs. Ask for a direction decision when the user has not already selected or delegated it. Establish a small role-based type scale, named heading-to-description and description-to-element spacing, component padding, heading placement and exceptions in the app's existing native theme. Two or three base type sizes are a starting point, not a cap on accessibility scaling or justified semantic roles. Make anti-slop findings specific to hierarchy, task and chosen direction rather than banning visual techniques universally.
 
@@ -63,7 +65,7 @@ For a substantial new direction, normally show two or three comparable treatment
 
 Use the existing architecture and theme when present. Translate the design into reusable SwiftUI views or Compose composables and shared tokens. Apply native text scaling, semantic labels, touch targets, keyboard behavior, insets, and reduced-motion alternatives appropriate to the platform and brief. A SwiftUI recipe is not automatically a Compose recipe: review timing, state ownership, lifecycle, and gesture behavior on each target.
 
-Implement complete user-visible flows incrementally and run checks supported by the project. Generated motion code is a starting point: integrate it with real state and verify interruption, back navigation, repeated activation, and reduced motion where applicable. Judge the app's own hierarchy, usability, and continuity as well as reference similarity.
+Implement complete user-visible flows incrementally and run checks supported by the project. Generated motion code is a starting point: integrate it with real state and verify interruption, back navigation, repeated activation, and reduced motion where applicable. Judge the app's hierarchy, usability and continuity against its declared direction and recorded observations.
 
 Compare final app renders at the target device sizes. Use existing simulator/emulator/device tooling when available; this MCP imports recordings and does not provide live capture. Record which builds and visual checks actually ran. If native rendering is unavailable, identify the remaining check; do not describe source inspection or a generated recipe as a verified device result.
 

@@ -29,3 +29,7 @@ Read back actual changes. No automatic two-way synchronization is implemented.
 Account/seat limits and tool availability must be checked at use time.
 
 Current toolkit verification does not include authenticated Figma requests.
+
+## Explicit project targets
+
+For Expo projects preserve the actual stack and SDK when translating selected context; follow [Expo contracts](expo.md). Actual node access/export and native verification remain separate evidence.

@@ -1,0 +1,169 @@
+{
+  "schema": "mobile-study-evidence-v1",
+  "date": "2026-10-27",
+  "revision": "source-sha256:dba3bdc4ed3d4d4c71c5bf619f79c490cbf01b1c635b614eb9c87d1cf289275f",
+  "sourceFiles": [
+    {
+      "path": "Palette/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
+      "sha256": "5455e89895236b193dc5e8552761c22f3d6e5d6bb25426f377e66d07d0bcf352"
+    },
+    {
+      "path": "Palette/Assets.xcassets/AppIcon.appiconset/Contents.json",
+      "sha256": "dc220e531918749f1e39e75f9f189f97f739cd96e0b71a38b72025f45d48fa00"
+    },
+    {
+      "path": "Palette/Assets.xcassets/Contents.json",
+      "sha256": "197937c7b50c8e1f4690e640009724cb0e02bded3f8de36c8f6eb5aa2903a6b5"
+    },
+    {
+      "path": "Palette/Composition.swift",
+      "sha256": "4a85c6b2cb5bac2bf9f49758b00af657414522b8098425c8a1ff7b467e6ef1fd"
+    },
+    {
+      "path": "Palette/ExportDocument.swift",
+      "sha256": "3d1912a685820689cdfd1c08ef38509dc21163e8009225d369fa2e1145eefcba"
+    },
+    {
+      "path": "Palette/PaletteApp.swift",
+      "sha256": "843cd44aaada95505a09cc76910af1bc459cdd612bbcb962eb0421fe3a809394"
+    },
+    {
+      "path": "Palette/PaletteStore.swift",
+      "sha256": "26a71651d4d06ae8b38612c6934eaf83a59ef7710e3203fe18b376ffdb535ccc"
+    },
+    {
+      "path": "Palette/PaletteView.swift",
+      "sha256": "23f153ff11527d7ff13b3dccbb4f53e9a1665e97414fe40b997307a468e155d9"
+    },
+    {
+      "path": "Palette/StudyTheme.swift",
+      "sha256": "1206edc5f5491d02755f1d0e1824d4ad34ee8f03590f96c4414e8e91dbf7e24f"
+    },
+    {
+      "path": "Palette/SwatchEditor.swift",
+      "sha256": "bf8d2bd6520d420793bfef9271fa9767025a5e7b484c8f1231fa8dc093cc3f7f"
+    },
+    {
+      "path": "Palette.xcodeproj/project.pbxproj",
+      "sha256": "c76beb10dfc270483e366bb9ff2ba337a501e1d80a28701ca043b6659c9eae28"
+    },
+    {
+      "path": "Palette.xcodeproj/xcshareddata/xcschemes/Palette.xcscheme",
+      "sha256": "e7da20ebb00a770079784b8c55c52ca11b16de6859dec8040ec0044fe4af0513"
+    },
+    {
+      "path": "PaletteTests/PaletteStateTests.swift",
+      "sha256": "af1666da00bc3df9c577a44179d4cc06e502726661d8d05f924e25a91f3154ca"
+    },
+    {
+      "path": "PaletteUITests/PaletteJourneyTests.swift",
+      "sha256": "25e2202ef3b8e5a4e30024bdc020d84765254caf0ec844647694f9c7d98957b1"
+    }
+  ],
+  "device": {
+    "model": "iPhone 17 Pro simulator",
+    "os": "iOS 26.2",
+    "xcode": "26.2"
+  },
+  "nativeChecks": {
+    "modelTestsPassed": 4,
+    "uiJourneysPassed": 4,
+    "darkAccessibilityExtraLargeReachabilityPassed": true
+  },
+  "media": [
+    {
+      "path": "Palette.svg",
+      "sha256": "e28df26d28dedc4736dc1eefccf776f7daea5bcfb0557520fb530456db26345c",
+      "bytes": 1492,
+      "treatment": "actual native exported SVG"
+    },
+    {
+      "path": "palette-baseline.png",
+      "sha256": "6dfb2f340fd0bb147b57324a5e00b05f126d6d616e18a6c88519416584ae78bc",
+      "bytes": 175976,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "palette-dark-large.png",
+      "sha256": "22e870b5c7389507b4aeefcd10c426d869043abfb5d218d1ad846199c08c99e7",
+      "bytes": 190953,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "dark",
+        "textSizeCategory": "accessibility-extra-large",
+        "textScale": null
+      }
+    },
+    {
+      "path": "palette-edit.gif",
+      "sha256": "7debd18bb105066f6a92ebaa63940edf5245af2c0057ff26aa850e9b913f103a",
+      "bytes": 517574,
+      "treatment": "trimmed, resized native screen recording; GIF sampled at 12 fps",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "palette-edit.mp4",
+      "sha256": "5e0c30ee50a0726270fa3cef418871b32980091520fbc4b27014eeeda33ac9f6",
+      "bytes": 162412,
+      "treatment": "trimmed native screen recording, encoded at 600px width",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "palette-edit.png",
+      "sha256": "aad59ecb738b4f387eba6ec7b372ff220c810eea281521095aa8cc59f2c7ce5d",
+      "bytes": 180915,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "palette-exported.png",
+      "sha256": "d4bdc3d9c694484ebf7cfd09517925aa96029b6103f2a756c6e9622f33b0b85d",
+      "bytes": 256970,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "palette-refined.png",
+      "sha256": "e7acfb7142e34ce41d22d7afab8fae4d295c2bc9d419224eacf70e281ac10369",
+      "bytes": 173595,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    }
+  ],
+  "limitations": [
+    "Simulator execution, not physical-device acceptance.",
+    "Authored baseline/refined treatments share content and tasks; no independent UX improvement claim.",
+    "Animation settings are authored; media encoding rate is not a native frame-performance measurement.",
+    "Raw captures and result bundles remain local; the published excerpts are derived from those runs."
+  ],
+  "excerptSource": {
+    "rawVideoSha256": "fe0a97f69c4baf576b96ad3488333c93a3f374252ec891132d3db3b56da823d6",
+    "startSeconds": 38,
+    "durationSeconds": 9
+  }
+}

@@ -4,6 +4,7 @@ import { homedir } from 'node:os';
 import { dirname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { parseArgs } from 'node:util';
+import { execFileSync } from 'node:child_process';
 
 const CHECKOUT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -24,23 +25,25 @@ async function digests(root) {
   for (const file of await filesAt(root)) if (file !== marker) result[portable(file)] = hash(await readFile(join(root, file)));
   return result;
 }
-async function installOwnedDirectory(target, stage) {
+async function installOwnedDirectory(target, stage, recovery) {
   const stat = await statOrNull(target);
+  let current;
   if (stat) {
     if (!stat.isDirectory() || stat.isSymbolicLink()) return 'skipped-existing';
     let previous;
     try { previous = JSON.parse(await readFile(join(target, marker), 'utf8')); } catch { return 'skipped-existing'; }
-    let current;
     try { current = await digests(target); } catch { return 'skipped-modified'; }
     if (previous.owner !== 'mobile-design-mcp' || JSON.stringify(current) !== JSON.stringify(previous.files)) return 'skipped-modified';
   }
   const state = { owner: 'mobile-design-mcp', files: await digests(stage) };
+  if (stat && JSON.stringify(current) === JSON.stringify(state.files)) return 'unchanged';
   await writeFile(join(stage, marker), JSON.stringify(state, null, 2) + '\n');
   await mkdir(dirname(target), { recursive: true });
   if (stat) {
-    const backup = target + '.previous-' + randomUUID(); await rename(target, backup);
+    const backup = join(recovery.directory, String(recovery.resources.length));
+    await mkdir(dirname(backup), { recursive: true }); await rename(target, backup);
     try { await rename(stage, target); } catch (error) { await rename(backup, target); throw error; }
-    await rm(backup, { recursive: true });
+    recovery.resources.push({ path: target, backup, previousFiles: current, installedFiles: state.files });
   } else await rename(stage, target);
   return stat ? 'updated' : 'installed';
 }
@@ -50,23 +53,74 @@ export async function installWorkflow({ client = 'both', scope = 'user', project
   if (scope === 'project' && (!project || !isAbsolute(project))) throw new Error('Project scope requires an absolute --project path.');
   const root = await realpath(scope === 'project' ? project : home);
   const source = await realpath(checkout);
+  const selectedClients = client === 'both' ? ['codex', 'claude'] : [client];
+  const destinations = [join(root, '.mobile-design-mcp'), ...selectedClients.flatMap(selected => [
+    join(root, selected === 'codex' ? '.agents' : '.claude', 'skills'),
+    join(root, selected === 'codex' ? '.codex' : '.claude', 'agents'),
+  ])];
+  for (const directory of destinations) {
+    let existing = directory;
+    while (!await statOrNull(existing)) existing = dirname(existing);
+    const resolved = await realpath(existing);
+    const rel = relative(root, resolved);
+    if (rel === '..' || rel.startsWith('..' + sep) || isAbsolute(rel)) throw new Error('Install destination resolves outside the selected scope; preserved.');
+    if (!(await lstat(resolved)).isDirectory()) throw new Error('Install destination ancestor is not a directory; preserved.');
+  }
   const toolkit = join(root, '.mobile-design-mcp', 'workflow');
   if (source === toolkit || relative(source, toolkit).split(sep)[0] !== '..' && !isAbsolute(relative(source, toolkit))) throw new Error('Install outside the toolkit source checkout.');
-  const workspace = join(root, '.mobile-design-mcp', 'install-' + randomUUID());
+  const attempt = randomUUID();
+  const receiptPath = join(root, '.mobile-design-mcp', 'install-receipt.json');
+  const existingReceipt = await statOrNull(receiptPath);
+  let previousReceipt;
+  if (existingReceipt) {
+    if (!existingReceipt.isFile() || existingReceipt.isSymbolicLink()) throw new Error('Existing install receipt is not a managed regular file; preserved.');
+    let previous;
+    try { previous = JSON.parse(await readFile(receiptPath, 'utf8')); } catch { throw new Error('Existing install receipt is unreadable; preserved.'); }
+    if (previous.owner !== 'mobile-design-mcp' || previous.schema !== 'mobile-design-install-v1') throw new Error('Existing install receipt is unmanaged; preserved.');
+    previousReceipt = previous;
+  }
+  const pkg = JSON.parse(await readFile(join(source, 'package.json'), 'utf8'));
+  const identity = { packageVersion: pkg.version ?? null, revision: null, state: 'unknown' };
+  try {
+    const git = (...args) => execFileSync('git', ['-C', source, ...args], { encoding: 'utf8', timeout: 3000, maxBuffer: 1024 * 1024, stdio: ['ignore','pipe','ignore'] }).trim();
+    if (await realpath(git('rev-parse', '--show-toplevel')) === source) {
+      identity.revision = git('rev-parse', 'HEAD');
+      identity.state = git('status', '--porcelain') ? 'modified' : 'clean';
+    }
+  } catch { /* Archive sources have no Git identity. */ }
+  const workspace = join(root, '.mobile-design-mcp', 'install-' + attempt);
+  const recovery = { directory: join(root, '.mobile-design-mcp', 'recovery', attempt), resources: [] };
   await mkdir(workspace, { recursive: true });
   const results = [];
+  const rememberedPaths = new Set([
+    ...(Array.isArray(previousReceipt?.managedPaths) ? previousReceipt.managedPaths : []),
+    ...(Array.isArray(previousReceipt?.results) ? previousReceipt.results.map(item => item?.path) : []),
+  ].filter(path => typeof path === 'string'));
+  const receipt = { schema: 'mobile-design-install-v1', owner: 'mobile-design-mcp', attempt,
+    instructionContract: 2, source: identity, client, scope, status: 'in-progress', results, recovery,
+    runtimeConnection: 'not-inspected; verify the actual connected capability report after restart' };
+  const saveReceipt = async () => {
+    receipt.managedPaths = [...new Set([...rememberedPaths, ...results.map(item => item.path)])].sort();
+    const pending = receiptPath + '.pending-' + attempt;
+    try { await writeFile(pending, JSON.stringify(receipt, null, 2) + '\n'); await rename(pending, receiptPath); }
+    finally { await rm(pending, { force: true }); }
+  };
   try {
     const bundle = join(workspace, 'bundle'); await mkdir(bundle);
     // Explicit allowlist: no .git, credentials, captures, runtime state or dependencies.
-    const includeResource = path => !relative(source, path).split(sep).some(part =>
-      ['.git', '.gradle', 'build', 'node_modules', '.artifacts', 'local.properties'].includes(part)
-      || part.endsWith('.apk') || part === '.env' || part.startsWith('.env.'));
+    const includeResource = path => {
+      const selected = portable(relative(source, path));
+      return !/^examples\/expo-study\/(?:ios|android)(?:\/|$)/.test(selected)
+        && !selected.split('/').some(part =>
+          ['.git', '.gradle', '.expo', 'build', 'DerivedData', 'xcuserdata', 'node_modules', '.artifacts', 'local.properties'].includes(part)
+          || /\.(?:apk|ipa|xcarchive|xcuserstate)$/.test(part) || part === '.env' || part.startsWith('.env.'));
+    };
     for (const name of ['skills', 'agents', 'docs', 'scripts', 'examples', 'src', 'test', 'package.json', 'tsconfig.json', 'README.md', 'LICENSE', 'LICENSES', 'NOTICE']) await cp(join(source, name), join(bundle, name), { recursive: true, dereference: false, filter: includeResource });
-    const bundleStatus = await installOwnedDirectory(toolkit, bundle);
+    const bundleStatus = await installOwnedDirectory(toolkit, bundle, recovery);
     results.push({ path: toolkit, status: bundleStatus });
     if (bundleStatus.startsWith('skipped')) throw new Error('Existing workflow bundle is unmanaged or modified; preserved. Choose another scope or review it before updating.');
     const names = (await readdir(join(source, 'skills'), { withFileTypes: true })).filter(entry => entry.isDirectory()).map(entry => entry.name).sort();
-    for (const selected of client === 'both' ? ['codex', 'claude'] : [client]) {
+    for (const selected of selectedClients) {
       const skills = join(root, selected === 'codex' ? '.agents' : '.claude', 'skills');
       for (const name of names) {
         const stage = join(workspace, selected + '-' + name); await cp(join(toolkit, 'skills', name), stage, { recursive: true });
@@ -78,7 +132,7 @@ export async function installWorkflow({ client = 'both', scope = 'user', project
           if (file === 'SKILL.md') content += `\nToolkit root: ${portable(toolkit)}. Resolve toolkit-relative agent/profile paths there; app-project paths remain relative to the app.\n`;
           await writeFile(path, content);
         }
-        results.push({ path: join(skills, name), status: await installOwnedDirectory(join(skills, name), stage) });
+        results.push({ path: join(skills, name), status: await installOwnedDirectory(join(skills, name), stage, recovery) });
       }
       for (const file of (await readdir(join(toolkit, 'agents'))).filter(file => file.endsWith('.md')).sort()) {
         const raw = (await readFile(join(toolkit, 'agents', file), 'utf8')).replace(/\r\n/g, '\n');
@@ -93,10 +147,32 @@ export async function installWorkflow({ client = 'both', scope = 'user', project
           : `---\nname: ${name}\ndescription: ${JSON.stringify(description)}\ntools: Read, Glob, Grep\n---\n${instructions}`;
         // Agent files may have personal changes. Never replace an existing definition automatically.
         try { await writeFile(target, content, { flag: 'wx' }); results.push({ path: target, status: 'installed' }); }
-        catch (error) { if (error.code !== 'EEXIST') throw error; results.push({ path: target, status: 'skipped-existing' }); }
+        catch (error) {
+          if (error.code !== 'EEXIST') throw error;
+          const info = await statOrNull(target);
+          const matches = info?.isFile() && !info.isSymbolicLink() && await readFile(target, 'utf8') === content;
+          results.push({ path: target, status: matches ? 'unchanged' : 'skipped-existing', ...(matches ? {} : { action: 'Preserved definition differs; review it against the current generated profile before claiming alignment.' }) });
+        }
       }
     }
-    return { client, scope, toolkit, results, note: 'No MCP connections, credentials, model settings or permission settings were changed. Restart the client and verify discovery.' };
+    const currentPaths = new Set(results.map(item => item.path));
+    const clientRoots = selectedClients.flatMap(selected => [
+      join(root, selected === 'codex' ? '.agents' : '.claude', 'skills'),
+      join(root, selected === 'codex' ? '.codex' : '.claude', 'agents'),
+    ]);
+    for (const path of rememberedPaths) {
+      if (currentPaths.has(path) || !clientRoots.some(directory => dirname(path) === directory)) continue;
+      if (await statOrNull(path)) results.push({ path, status: 'skipped-retired',
+        action: 'Preserved resource is absent from this edition. Review and remove it explicitly before claiming scope alignment.' });
+    }
+    receipt.status = results.some(item => item.status.startsWith('skipped')) ? 'partial' : 'completed';
+    await saveReceipt();
+    return { client, scope, toolkit, results, receiptPath, status: receipt.status, recovery,
+      note: 'No MCP connections, credentials, model settings or permission settings were changed. Preserved conflicts need review; restart the client and verify actual connected capabilities.' };
+  } catch (error) {
+    receipt.status = 'failed'; receipt.error = error.message;
+    try { await saveReceipt(); } catch (receiptError) { throw new AggregateError([error, receiptError], 'Installation failed and its receipt could not be saved; inspect the managed paths and recovery directory.'); }
+    throw error;
   } finally { await rm(workspace, { recursive: true, force: true }); }
 }
 

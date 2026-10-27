@@ -246,3 +246,21 @@ before an authorized release. See [usage rights](usage-rights.md).
 The [Tempo example](../examples/tempo-android/README.md) demonstrates an actual
 Android baseline/redesign capture and narrow completion/undo checks. Its
 [evidence record](tempo-study.md) keeps incomplete verification explicit.
+
+
+## Expo and mobile quality
+
+Use `$mobile-expo` in Codex or `/mobile-expo` in Claude Code for an Expo screen
+or flow. The agent inspects the installed SDK, navigation, theme and animation
+stack, then makes a bounded review or implementation change. The target records
+both the operating system and `expo-react-native`; it does not label React Native
+source as SwiftUI. See [Expo contracts](expo.md).
+
+Use `$mobile-quality` or `/mobile-quality` to examine hierarchy, task actions,
+content, text scaling, spacing, navigation, recovery and purposeful motion against
+the chosen direction. Findings reuse the normal reviewer/packet workflow, with
+concrete state evidence and required reruns. See [quality criteria](mobile-quality.md).
+
+The connected MCP must advertise the V2 capabilities before these instructions
+use `create_project_brief`. Check the returned target and artifact version;
+installed skill files do not update a running MCP process.

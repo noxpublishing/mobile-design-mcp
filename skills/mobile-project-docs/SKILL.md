@@ -27,3 +27,7 @@ The default previews the result; add `--write` for the requested update. The hel
 ## Verify and maintain
 
 Read every changed document, resolve local links, confirm commands and remove unsupported claims. Preserve licenses and applicable source notices. Recheck shared contracts after design or implementation changes. Use `mobile-design-drift` when a broader consistency audit is requested or materially needed. Do not commit, publish or change unrelated configuration merely because documentation was requested.
+
+## Explicit project targets
+
+Describe implemented targets, actual connected capabilities and current app evidence separately. Follow [Expo contracts](../../docs/expo.md); repository source does not update installed client snapshots.

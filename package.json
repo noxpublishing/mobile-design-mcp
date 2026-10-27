@@ -1,9 +1,9 @@
 {
   "name": "mobile-design-mcp",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
-  "description": "Evidence-based native mobile design references, flows and motion recipes for SwiftUI and Jetpack Compose.",
+  "description": "Mobile design evidence and original iOS, Android and Expo interaction studies.",
   "license": "SEE LICENSE IN LICENSE",
   "files": [
     "dist",

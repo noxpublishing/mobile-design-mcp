@@ -1,0 +1,76 @@
+{
+  "schema": "mobile-design-review-v2",
+  "revision": "source-sha256:dba3bdc4ed3d4d4c71c5bf619f79c490cbf01b1c635b614eb9c87d1cf289275f",
+  "scope": "flow",
+  "task": "Edit a colour, undo the change and export the composition",
+  "entryContext": "Palette after launch with the built-in five colours",
+  "target": {
+    "platform": "ios",
+    "implementationStack": "swiftui"
+  },
+  "device": {
+    "name": "iPhone 17 Pro simulator",
+    "os": "iOS 26.2",
+    "textScale": 1
+  },
+  "direction": "A colour-led composition with readable native task controls and an editable RGB detail",
+  "designSystemSources": [
+    "Palette/StudyTheme.swift",
+    "Palette/PaletteView.swift"
+  ],
+  "criteria": [
+    "Save commits one colour; Cancel preserves it",
+    "Reorder and Undo preserve stable identity",
+    "Export success follows actual destination save"
+  ],
+  "evidence": [
+    {
+      "id": "palette-baseline",
+      "path": "evidence/palette-baseline.png",
+      "revision": "source-sha256:dba3bdc4ed3d4d4c71c5bf619f79c490cbf01b1c635b614eb9c87d1cf289275f",
+      "state": "palette baseline; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "6dfb2f340fd0bb147b57324a5e00b05f126d6d616e18a6c88519416584ae78bc"
+    },
+    {
+      "id": "palette-edit-recording",
+      "path": "evidence/palette-edit.mp4",
+      "revision": "source-sha256:dba3bdc4ed3d4d4c71c5bf619f79c490cbf01b1c635b614eb9c87d1cf289275f",
+      "state": "palette edit; light appearance, default text size",
+      "role": "implemented",
+      "kind": "recording",
+      "sha256": "5e0c30ee50a0726270fa3cef418871b32980091520fbc4b27014eeeda33ac9f6"
+    },
+    {
+      "id": "palette-edit",
+      "path": "evidence/palette-edit.png",
+      "revision": "source-sha256:dba3bdc4ed3d4d4c71c5bf619f79c490cbf01b1c635b614eb9c87d1cf289275f",
+      "state": "palette edit; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "aad59ecb738b4f387eba6ec7b372ff220c810eea281521095aa8cc59f2c7ce5d"
+    },
+    {
+      "id": "palette-exported",
+      "path": "evidence/palette-exported.png",
+      "revision": "source-sha256:dba3bdc4ed3d4d4c71c5bf619f79c490cbf01b1c635b614eb9c87d1cf289275f",
+      "state": "palette exported; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "d4bdc3d9c694484ebf7cfd09517925aa96029b6103f2a756c6e9622f33b0b85d"
+    },
+    {
+      "id": "palette-refined",
+      "path": "evidence/palette-refined.png",
+      "revision": "source-sha256:dba3bdc4ed3d4d4c71c5bf619f79c490cbf01b1c635b614eb9c87d1cf289275f",
+      "state": "palette refined; light appearance, default text size",
+      "role": "implemented",
+      "kind": "screenshot",
+      "sha256": "e7acfb7142e34ce41d22d7afab8fae4d295c2bc9d419224eacf70e281ac10369"
+    }
+  ],
+  "gaps": [
+    "No physical-device, VoiceOver, representative real-user or native performance result is established."
+  ]
+}

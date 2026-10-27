@@ -1,4 +1,6 @@
 export type Platform = 'ios' | 'android';
+export type ImplementationStack = 'swiftui' | 'jetpack-compose' | 'expo-react-native';
+export interface ProjectTarget { platform: Platform; implementationStack: ImplementationStack; }
 export type Provider = 'apple-design-awards' | 'google-play-awards' | 'local';
 export interface Award {
   issuer: string;

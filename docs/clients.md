@@ -42,6 +42,26 @@ locally modified destinations are preserved and reported. Existing agent files
 are preserved; review/remove an old owned profile before reinstalling to update it.
 No existing client config, credentials, permissions or model choices are changed.
 
+The scope-local `.mobile-design-mcp/install-receipt.json` records instruction
+contract `2`, package/source identity when known, per-path results and saved
+prior managed resources. Unknown archive revision stays unknown; a dirty checkout
+is marked modified. Matching existing profiles are unchanged; differing profiles
+are preserved and make alignment partial. A failed attempt records what changed
+and any available recovery resources, rather than claiming complete installation.
+
+Before restoring a saved resource, stop its active client readers, inspect the
+receipt and confirm that every current managed file still matches its recorded
+installed hash/set. Preserve subsequent edits; a mismatch requires review. Restore
+only the identified directory from its recorded backup, keeping a copy of the
+current state. Do not replace unrelated client files or claim an atomic rollback.
+Record the restoration as unverified in the receipt and recheck actual discovery
+and runtime capabilities. Keep recovery copies until the intended set is verified.
+
+After restart, check the actual tool list and `get_provider_status.capabilities`.
+Expo needs `create_project_brief`, its requested target and V2 artifact support;
+validate the returned brief/packet target too. A receipt describes installation,
+not a live executable or account entitlement. See [Expo contracts](expo.md).
+
 | Client | Skill destination | Reviewer definition destination |
 |---|---|---|
 | Codex | `.agents/skills/<name>/SKILL.md` | `.codex/agents/<name>.toml` |

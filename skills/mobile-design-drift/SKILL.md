@@ -22,3 +22,7 @@ Classify each result as a confirmed mismatch, intentional documented difference,
 Return a concise report with inspected files/evidence, severity, expected/observed behavior, user impact, proposed correction and required rerun. Use `agents/mobile-docs-reviewer.md` and affected domain profiles when fresh-context delegation is available and authorized. Do not label a same-context self-check independent.
 
 When fixes are requested or already authorized, correct bounded inconsistencies, update canonical sources and obtain replacement evidence for affected results. Keep unresolved trade-offs visible. Never change an unmeasured claim into a pass to remove a warning.
+
+## Explicit project targets
+
+When relevant, compare requested target, actual runtime capabilities and returned artifact version using [Expo contracts](../../docs/expo.md). A partial installation is a capability gap, distinct from visual drift.

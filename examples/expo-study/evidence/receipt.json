@@ -1,0 +1,187 @@
+{
+  "schema": "mobile-study-evidence-v1",
+  "date": "2026-10-27",
+  "revision": "source-sha256:7bcdc7125e3e629d719d361208345d41637f29821e3de29a9289f3456f060d97",
+  "sourceFiles": [
+    {
+      "path": "App.tsx",
+      "sha256": "a436ed543b10e6d9db66c1912bea184ea38e60ca71ac6c1be4af9b4be9c1e96d"
+    },
+    {
+      "path": "app.json",
+      "sha256": "9a5ea5876747b6fb29d963b8afdba2aa4b83f9dff332df4e3e74efd971907946"
+    },
+    {
+      "path": "assets/icon.png",
+      "sha256": "3daed739f72319664dac23c607b47fc9b832255a8d95077bdd5ecfaaa14d7c10"
+    },
+    {
+      "path": "index.ts",
+      "sha256": "cb1d84b00a71469ab80811baf5cbf91e30c48308eac58288b4df65cf795220f0"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "a16501476429b67b34c8c36944820de9a2656224940540296b408c5f4bd80d4b"
+    },
+    {
+      "path": "package.json",
+      "sha256": "b5e0e2368cd3432ee8cefab4c08c6a2213665190a328affc53f9ab1eb763b791"
+    },
+    {
+      "path": "src/ArticleDetail.tsx",
+      "sha256": "1809546bda01e980e582d0a115056fe6e149d547caead8776cee5f426ddf8ce1"
+    },
+    {
+      "path": "src/QueueScreen.tsx",
+      "sha256": "e41814f5fda322a98459965ad50052d4f41807a4cff73f6fd188c5ec670c1743"
+    },
+    {
+      "path": "src/persistence.ts",
+      "sha256": "ffb98d33a6271fd4c20cadf483083fdc07032c6c1998bed9801d5e1cbbea65e4"
+    },
+    {
+      "path": "src/queue.ts",
+      "sha256": "0574beddcb325fe8a74ce4f60a866014372e4bd2cf00af0ecdfaf984fe9dfc09"
+    },
+    {
+      "path": "src/readingItems.ts",
+      "sha256": "6754ce308a0f1443cc0653331243157defcf3aedb15b92c71b4c756b21c16082"
+    },
+    {
+      "path": "src/storage.ts",
+      "sha256": "9f26f45f0c0bad81c52e2b043d641b1eab31289f832a118b1029ddf1769b6647"
+    },
+    {
+      "path": "src/theme.ts",
+      "sha256": "9bee0931bcdb9629dd9fc70333332c9ed818fa5db2c955dbed97a2f8703e4e51"
+    },
+    {
+      "path": "src/useReadingQueue.ts",
+      "sha256": "79437256298223f6dd110ba1680408e08693b4296fd6e1dd69f6c41b2bab538c"
+    },
+    {
+      "path": "src/useStudyMotion.ts",
+      "sha256": "5eb74365bb7215dd1a18cc239fbac231c43f86d4f2e0199293d9e4a86ee0d141"
+    },
+    {
+      "path": "test/queue.test.ts",
+      "sha256": "76b000b9c21ed0090b517c9855091918249af63ed5b0373f4c32cfa789fffb9b"
+    },
+    {
+      "path": "tsconfig.json",
+      "sha256": "6b06564d721485bba68be533b067b00e8895778d659dd270b9b3fb7ff75b8d43"
+    }
+  ],
+  "device": {
+    "model": "iPhone 17 Pro simulator",
+    "os": "iOS 26.2",
+    "xcode": "26.2"
+  },
+  "stack": {
+    "expo": "55.0.32",
+    "reactNative": "0.83.10",
+    "reanimated": "4.2.1",
+    "worklets": "0.7.4"
+  },
+  "nativeChecks": {
+    "releaseBuildPassed": true,
+    "typecheckPassed": true,
+    "dependencyCheckPassed": true,
+    "domainTestsPassed": 5,
+    "ordinaryUIJourneysPassed": 2,
+    "systemReducedMotionJourneyPassed": true,
+    "heldDragAppInterruptionPassed": true,
+    "darkAccessibilityExtraLargeDetailActionsPassed": true,
+    "uiJourneysPassed": 4
+  },
+  "media": [
+    {
+      "path": "folio-baseline.png",
+      "sha256": "14fbdbbcb036829c7026123b02b90a028624bb9e27a84d88d0b81d91456b2b8d",
+      "bytes": 182279,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "folio-dark-large.png",
+      "sha256": "3c6157057619462183dc13cb80e9f3e5888ff402cdd235678faa379289e98def",
+      "bytes": 213838,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "dark",
+        "textSizeCategory": "accessibility-extra-large",
+        "textScale": null
+      }
+    },
+    {
+      "path": "folio-queue.gif",
+      "sha256": "48f3166d38d16d58e2c3a1d2ee861cea12b558b35bcf35336a2731b5162ccf06",
+      "bytes": 928611,
+      "treatment": "trimmed, resized native recording",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "folio-queue.mp4",
+      "sha256": "434c54300d4c715e0057a8f2a74a8130fb53048c4b8b126a53f41ea118231d6a",
+      "bytes": 524909,
+      "treatment": "trimmed, resized native recording",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "folio-read-detail.png",
+      "sha256": "e4ef96a3a4542e78f24d396e3417d1101ca4ad5208faa8338d994ec5fa7ae60a",
+      "bytes": 304093,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "folio-refined.png",
+      "sha256": "21c910beeec86f79a1536ae37e6663ec7f4e69f17b17d94f697128b20e63f488",
+      "bytes": 233984,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    },
+    {
+      "path": "folio-reordered.png",
+      "sha256": "338fc7583be5821106538bda9a74801706242c4c0e3725c7fbbf19b591af3dea",
+      "bytes": 233450,
+      "treatment": "unedited native screenshot",
+      "captureConditions": {
+        "appearance": "light",
+        "textSizeCategory": "large",
+        "textScale": 1
+      }
+    }
+  ],
+  "excerptSource": {
+    "rawVideoSha256": "ce2d900e70158bcdbf02873b2b663761aca47a8ae83a250e5ae171401371e397",
+    "startSeconds": 19.5,
+    "durationSeconds": 9
+  },
+  "limitations": [
+    "Actual iOS simulator execution; Android and physical-device acceptance remain unverified.",
+    "Independent UX improvement, assistive-technology task success and native frame pacing are not established.",
+    "PNGs are unedited native captures; GIF is a trimmed/resized excerpt sampled at 12 fps.",
+    "Native UI testing used an isolated XCTest driver; the CNG project is generated from the committed app source."
+  ]
+}

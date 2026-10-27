@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1440" height="640" viewBox="0 0 1440 640" role="img" aria-labelledby="title desc">
   <title id="title">Mobile Design MCP — Design that feels native</title>
-  <desc id="desc">An original editorial illustration of reference research becoming native interface design and evidence-backed review. For SwiftUI, Jetpack Compose, Claude Code and Codex.</desc>
+  <desc id="desc">An original editorial illustration of reference research becoming native interface design and evidence-backed review. For SwiftUI, Jetpack Compose, Expo, Claude Code and Codex.</desc>
   <defs>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#f4f5e9" stroke-opacity=".045"/></pattern>
     <clipPath id="round"><rect width="1440" height="640" rx="28"/></clipPath>

@@ -1,4 +1,4 @@
 interface:
   display_name: "Native Mobile Design"
-  short_description: "Native SwiftUI and Compose design from evidence"
-  default_prompt: "Use $mobile-design to design a native mobile app from references, user flows, and observed motion."
+  short_description: "SwiftUI, Compose and Expo design from evidence"
+  default_prompt: "Use $mobile-design to inspect the actual mobile stack and design its requested flow from identified evidence."

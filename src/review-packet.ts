@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import { copyFile, mkdir, readFile, realpath, rm, stat, writeFile } from 'node:fs/promises';
 import { dirname, extname, isAbsolute, join, relative, resolve, sep } from 'node:path';
 import { z } from 'zod';
+import { projectTargetSchema } from './project-target.js';
 
 export const reviewMode=z.enum(['consistency','discoverability','motion','accessibility','performance']);
 export const reviewManifestSchema=z.object({
@@ -22,6 +23,10 @@ export const reviewManifestSchema=z.object({
   }).strict()).max(8),
   gaps:z.array(z.string().min(1).max(1000)).max(30).default([]),
 }).strict();
+export const reviewManifestV2Schema=reviewManifestSchema.omit({platform:true}).extend({
+  schema:z.literal('mobile-design-review-v2'),target:projectTargetSchema,
+}).strict();
+const supportedManifestSchema=z.discriminatedUnion('schema',[reviewManifestSchema,reviewManifestV2Schema]);
 const digest=(data:Buffer)=>createHash('sha256').update(data).digest('hex');
 
 /** Assemble a bounded local review snapshot. It neither runs reviewers nor certifies UX/performance. */
@@ -30,7 +35,7 @@ export async function buildDesignReviewPacket(input:{manifestPath:string;outputD
   if(!isAbsolute(input.manifestPath)||!isAbsolute(input.outputDirectory))throw new Error('Use absolute manifest and output paths.');
   if((await stat(input.manifestPath)).size>1024*1024)throw new Error('Review manifest exceeds 1 MiB.');
   const manifestBytes=await readFile(input.manifestPath);
-  const manifest=reviewManifestSchema.parse(JSON.parse(manifestBytes.toString('utf8')));
+  const manifest=supportedManifestSchema.parse(JSON.parse(manifestBytes.toString('utf8')));
   if(new Set(manifest.evidence.map(e=>e.id)).size!==manifest.evidence.length)throw new Error('Evidence ids must be unique.');
   const root=await realpath(dirname(input.manifestPath));
   const inside=async(path:string)=>{
@@ -59,7 +64,9 @@ export async function buildDesignReviewPacket(input:{manifestPath:string;outputD
   if(input.mode!=='discoverability')for(const [i,path] of manifest.designSystemSources.entries()){
     const source=await inside(path);const info=await stat(source);
     if(!info.isFile()||info.size>128*1024)throw new Error('Design source snapshots must be regular files of at most 128 KiB.');
-    if(!['.swift','.kt','.json','.css','.md','.yaml','.yml'].includes(extname(source).toLowerCase()))throw new Error('Unsupported design-system source file.');
+    const extensions=['.swift','.kt','.json','.css','.md','.yaml','.yml'];
+    if(manifest.schema==='mobile-design-review-v2'&&manifest.target.implementationStack==='expo-react-native')extensions.push('.ts','.tsx','.js','.jsx');
+    if(!extensions.includes(extname(source).toLowerCase()))throw new Error('Unsupported design-system source file.');
     designSources.push({source,packetPath:'design-system/source-'+i+extname(source),sha256:digest(await readFile(source))});
   }
   const gaps=[...manifest.gaps];
@@ -76,9 +83,10 @@ export async function buildDesignReviewPacket(input:{manifestPath:string;outputD
       const target=join(output,item.packetPath);await mkdir(dirname(target),{recursive:true});await copyFile(item.source,target);
       if(digest(await readFile(target))!==item.sha256)throw new Error('An input changed during packet creation; regenerate the snapshot.');
     }
-    const packet={schema:'mobile-design-packet-v1',mode:input.mode,status,
+    const packet={schema:manifest.schema==='mobile-design-review-v2'?'mobile-design-packet-v2':'mobile-design-packet-v1',mode:input.mode,status,
       manifestSha256:digest(manifestBytes),revision:manifest.revision,revisionBasis:'manifest-declared; build linkage must be verified by the operator',
-      scope:manifest.scope,task:manifest.task,entryContext:manifest.entryContext,platform:manifest.platform,device:manifest.device,
+      scope:manifest.scope,task:manifest.task,entryContext:manifest.entryContext,
+      ...(manifest.schema==='mobile-design-review-v2'?{target:manifest.target}:{platform:manifest.platform}),device:manifest.device,
       ...(input.mode==='discoverability'?{}:{direction:manifest.direction,criteria:manifest.criteria,
         designSystem:designSources.map(({packetPath,sha256})=>({path:packetPath,sha256}))}),
       evidence:evidence.map(({source,packetPath,...rest})=>({...rest,path:packetPath})),gaps,

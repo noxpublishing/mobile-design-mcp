@@ -1,0 +1,19 @@
+# Local execution output must not enter study packages.
+**/.artifacts/
+**/.gradle/
+**/.build/
+**/build/
+**/DerivedData/
+**/Pods/
+**/xcuserdata/
+**/*.xcuserstate
+**/*.xcresult/
+**/*.xcarchive/
+**/*.apk
+**/*.ipa
+**/.expo/
+**/local.properties
+**/*.log
+**/.env*
+/expo-study/ios/
+/expo-study/android/
