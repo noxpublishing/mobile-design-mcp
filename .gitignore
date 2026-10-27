@@ -11,3 +11,7 @@ research/
 *.db-shm
 *.tgz
 .DS_Store
+.gradle/
+**/build/
+local.properties
+*.apk

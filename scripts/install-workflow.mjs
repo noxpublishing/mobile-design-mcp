@@ -58,7 +58,10 @@ export async function installWorkflow({ client = 'both', scope = 'user', project
   try {
     const bundle = join(workspace, 'bundle'); await mkdir(bundle);
     // Explicit allowlist: no .git, credentials, captures, runtime state or dependencies.
-    for (const name of ['skills', 'agents', 'docs', 'scripts', 'examples', 'src', 'test', 'package.json', 'tsconfig.json', 'README.md', 'LICENSE', 'LICENSES', 'NOTICE']) await cp(join(source, name), join(bundle, name), { recursive: true, dereference: false });
+    const includeResource = path => !relative(source, path).split(sep).some(part =>
+      ['.git', '.gradle', 'build', 'node_modules', '.artifacts', 'local.properties'].includes(part)
+      || part.endsWith('.apk') || part === '.env' || part.startsWith('.env.'));
+    for (const name of ['skills', 'agents', 'docs', 'scripts', 'examples', 'src', 'test', 'package.json', 'tsconfig.json', 'README.md', 'LICENSE', 'LICENSES', 'NOTICE']) await cp(join(source, name), join(bundle, name), { recursive: true, dereference: false, filter: includeResource });
     const bundleStatus = await installOwnedDirectory(toolkit, bundle);
     results.push({ path: toolkit, status: bundleStatus });
     if (bundleStatus.startsWith('skipped')) throw new Error('Existing workflow bundle is unmanaged or modified; preserved. Choose another scope or review it before updating.');

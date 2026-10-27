@@ -87,8 +87,13 @@ test('Windows CRLF profile checkouts generate working client definitions', async
     for (const file of ['package.json', 'tsconfig.json', 'README.md', 'LICENSE', 'NOTICE']) await writeFile(join(checkout, file), 'Fixture.\r\n');
     await writeFile(join(checkout, 'skills', 'demo', 'SKILL.md'), '---\r\nname: demo\r\ndescription: Demo skill\r\n---\r\nRead [guide](../../docs/guide.md).\r\n');
     await writeFile(join(checkout, 'docs', 'guide.md'), 'Guide.');
+    await mkdir(join(checkout, 'examples', 'demo', 'build'), { recursive: true });
+    await writeFile(join(checkout, 'examples', 'demo', 'build', 'private.apk'), 'Generated build output');
+    await writeFile(join(checkout, 'examples', 'demo', 'local.properties'), 'Machine-specific SDK path');
     await writeFile(join(checkout, 'agents', 'demo-reviewer.md'), '---\r\nname: demo-reviewer\r\ndescription: Review the fixture\r\n---\r\nInspect read-only.\r\n');
     await installWorkflow({ home, checkout });
+    await assert.rejects(stat(join(home, '.mobile-design-mcp', 'workflow', 'examples', 'demo', 'build')), { code: 'ENOENT' });
+    await assert.rejects(stat(join(home, '.mobile-design-mcp', 'workflow', 'examples', 'demo', 'local.properties')), { code: 'ENOENT' });
     const codex = await readFile(join(home, '.codex', 'agents', 'demo-reviewer.toml'), 'utf8');
     const instructions = JSON.parse(codex.match(/^developer_instructions = (.+)$/m)[1]);
     assert.ok(instructions.includes('Inspect read-only.')); assert.ok(instructions.includes('docs/agents.md'));

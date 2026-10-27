@@ -1,0 +1,35 @@
+{
+  "schema": "tempo-mcp-use-v1",
+  "researchCalls": [
+    "get_provider_status",
+    "search_apps",
+    "get_app",
+    "get_app",
+    "mobbin_list_tools",
+    "build_motion_recipe",
+    "create_mobile_brief"
+  ],
+  "evidenceCalls": [
+    "import_app",
+    "import_recording",
+    "import_recording",
+    "create_flow"
+  ],
+  "ownedAppId": "local-78ce279f-0b89-46ff-ae8e-005ba8a189be",
+  "flowId": "flow-555d6e90-b7b0-49f3-9b22-8ee83abe8490",
+  "captures": [
+    {
+      "id": "capture-android-d539507d39172a993ce0",
+      "sha256": "d5dd77034c8421619df9cdaaa2b66558c1f783d1405ed27aa50b6a864ff439cc",
+      "platform": "android",
+      "appVersion": "1.0-study"
+    },
+    {
+      "id": "capture-android-845871308e045a2896c2",
+      "sha256": "a2704e4a8e1a35814729dbb8f57a08550d91458a4f44c323b3e521565a8ccbe3",
+      "platform": "android",
+      "appVersion": "1.0-study"
+    }
+  ],
+  "note": "A curated evidence trace, not raw provider responses. Motion/UX/performance limitations are in docs/tempo-study.md."
+}

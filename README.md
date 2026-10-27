@@ -1,12 +1,36 @@
+![Mobile Design MCP — Design that feels native. Original vector illustration.](docs/assets/hero.svg)
+
 # Mobile Design MCP
 
-Native mobile design references, evidence and review workflows for **SwiftUI** and **Jetpack Compose**.
+**From inspiration to a native app you can actually inspect.**
 
-> **For noncommercial studies, learning and research.** Original project code is source-available under the [Noncommercial Study License](LICENSE); commercial use by recipients is not licensed. Separately licensed Apache-2.0 workflow files retain their permissions. The rights holder's own local use is unrestricted by this grant. No runtime usage locks are included. See [usage and content rights](docs/usage-rights.md).
+A mobile design toolkit for **Claude Code and Codex**: reference research, purposeful visual systems, **SwiftUI / Jetpack Compose** implementation, independent reviews and explicit UX/performance evidence.
 
-Search award-recognized apps, organize your own screenshots and recordings, annotate UX flows, inspect transition frames, and generate native motion examples. The accompanying design skill develops a visual direction and applies independent review, a final UX loop and a measured native-performance loop. An optional showcase skill presents the finished app afterward.
+> **For noncommercial studies, learning and research.** Original code uses the [Noncommercial Study License](LICENSE). Marked Apache-2.0 files retain their permissions; the owner's own use is unrestricted by this grant. No runtime license locks. [Rights and scope](docs/usage-rights.md).
+
+**8 skills · 7 reviewer profiles · 17 MCP tools · Windows / macOS / Linux**
+
+[See the native comparison](#a-small-app-two-design-approaches) · [Install for your client](docs/clients.md) · [Explore the workflow](docs/workflow.md)
 
 This is an early working toolkit. It supports an agent's design work; it does not certify award quality, collect native frame profiles or turn one screenshot into a complete app.
+
+## A small app, two design approaches
+
+**Tempo** is a real Jetpack Compose habit-completion study. Both screenshots come from the same Android emulator and APK, with the same three habits and one already complete.
+
+<table>
+  <tr><th>Conventional Material baseline</th><th>After the MCP-assisted design pass</th></tr>
+  <tr>
+    <td align="center"><img src="docs/assets/tempo-baseline.png" width="320" alt="Tempo baseline: Material cards, three habit checkboxes and a generic completion button." /></td>
+    <td align="center"><img src="docs/assets/tempo-workflow.png" width="320" alt="Tempo redesign: paper and forest palette, role-based type and spacing, highlighted reading habit and Complete reading action." /></td>
+  </tr>
+</table>
+
+The redesign gives the next task a specific action, groups related information, applies a small type/spacing system, and connects native progress feedback to actual state. The MCP supplied reference metadata, a brief and an authored motion recipe; the agent wrote and compiled the app.
+
+This is an **illustrative redesign**, not an independent-agent benchmark or a measured UX improvement. Both variants were made by one author, who knew the workflow. Provider gaps and unmeasured checks remain visible. The banner above is an illustration; the comparison images are unedited emulator screenshots.
+
+[Run the mini app](examples/tempo-android/README.md) · [Read the evidence and limitations](docs/tempo-study.md) · [Capture metadata](docs/assets/tempo-evidence.json)
 
 ## Quick start
 

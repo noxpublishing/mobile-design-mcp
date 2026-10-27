@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="640" viewBox="0 0 1440 640" role="img" aria-labelledby="title desc">
+  <title id="title">Mobile Design MCP — Design that feels native</title>
+  <desc id="desc">An original editorial illustration of reference research becoming native interface design and evidence-backed review. For SwiftUI, Jetpack Compose, Claude Code and Codex.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#f4f5e9" stroke-opacity=".045"/></pattern>
+    <clipPath id="round"><rect width="1440" height="640" rx="28"/></clipPath>
+  </defs>
+  <g clip-path="url(#round)">
+    <rect width="1440" height="640" fill="#151c19"/>
+    <rect x="800" width="640" height="640" fill="url(#grid)"/>
+    <path d="M800 0V640" stroke="#354139"/>
+    <g font-family="Arial, Helvetica, sans-serif">
+      <rect x="54" y="48" width="36" height="36" rx="11" fill="#dcf78d"/>
+      <path d="M63 73V59L72 69L81 59V73" fill="none" stroke="#151c19" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="105" y="73" fill="#f0f2e7" font-size="21" font-weight="700" letter-spacing="-.5">mobile design mcp</text>
+      <text x="55" y="163" fill="#a4b4a5" font-size="12" font-weight="700" letter-spacing="2.6">FROM REFERENCE TO REAL INTERACTION</text>
+      <text x="49" y="262" fill="#f0f2e7" font-size="83" font-weight="700" letter-spacing="-4.8">Design that</text>
+      <text x="49" y="351" fill="#dcf78d" font-size="83" font-weight="700" letter-spacing="-4.8">feels native.</text>
+      <text x="55" y="410" fill="#b9c3b8" font-size="21">Research. Build. Review. Refine.</text>
+      <rect x="55" y="452" width="111" height="36" rx="18" fill="#26332b" stroke="#45533f"/>
+      <text x="110" y="475" fill="#dce6d2" font-size="13" text-anchor="middle">SwiftUI</text>
+      <rect x="176" y="452" width="164" height="36" rx="18" fill="#26332b" stroke="#45533f"/>
+      <text x="258" y="475" fill="#dce6d2" font-size="13" text-anchor="middle">Jetpack Compose</text>
+      <path d="M55 542H746" stroke="#354139"/>
+      <text x="55" y="581" fill="#9bac9e" font-size="13">8 focused skills</text>
+      <circle cx="192" cy="576" r="2" fill="#687d67"/>
+      <text x="211" y="581" fill="#9bac9e" font-size="13">7 reviewer profiles</text>
+      <circle cx="371" cy="576" r="2" fill="#687d67"/>
+      <text x="390" y="581" fill="#9bac9e" font-size="13">Claude Code + Codex</text>
+      <text x="846" y="73" fill="#9bac9e" font-size="11" font-weight="700" letter-spacing="2">A SMALL SYSTEM FOR BETTER DECISIONS</text>
+      <path d="M878 443C958 490 1010 150 1104 184S1263 448 1375 360" fill="none" stroke="#789060" stroke-width="1.5" stroke-dasharray="4 7"/>
+      <g transform="translate(850 157) rotate(-9 73 129)">
+        <rect width="146" height="258" rx="24" fill="#26332b" stroke="#596d54"/>
+        <rect x="10" y="10" width="126" height="238" rx="17" fill="#e6e9db"/>
+        <rect x="54" y="18" width="38" height="6" rx="3" fill="#26332b"/>
+        <rect x="23" y="48" width="76" height="8" rx="4" fill="#29362c"/>
+        <rect x="23" y="66" width="52" height="5" rx="2.5" fill="#a2ae97"/>
+        <rect x="23" y="91" width="100" height="70" rx="10" fill="#c0cbb2"/>
+        <circle cx="73" cy="125" r="21" fill="none" stroke="#789060" stroke-width="6"/>
+        <rect x="23" y="179" width="100" height="8" rx="4" fill="#c0cbb2"/>
+        <rect x="23" y="195" width="75" height="8" rx="4" fill="#c0cbb2"/>
+        <rect x="23" y="218" width="100" height="16" rx="8" fill="#29362c"/>
+      </g>
+      <g transform="translate(1040 130)">
+        <rect width="174" height="310" rx="29" fill="#151c19" stroke="#dcf78d" stroke-width="2"/>
+        <rect x="9" y="9" width="156" height="292" rx="22" fill="#f2f1e8"/>
+        <rect x="64" y="17" width="46" height="7" rx="3.5" fill="#151c19"/>
+        <text x="23" y="55" fill="#617055" font-size="9" letter-spacing="1.3">YOUR DAILY RHYTHM</text>
+        <text x="22" y="82" fill="#1f2c22" font-size="22" font-weight="700" letter-spacing="-1">A little better.</text>
+        <text x="22" y="107" fill="#1f2c22" font-size="22" font-weight="700" letter-spacing="-1">Every day.</text>
+        <rect x="21" y="125" width="132" height="76" rx="13" fill="#26382a"/>
+        <path d="M61 181A26 26 0 1 1 113 181" fill="none" stroke="#52644b" stroke-width="7"/>
+        <path d="M61 181A26 26 0 0 1 76 157" fill="none" stroke="#dcf78d" stroke-width="7" stroke-linecap="round"/>
+        <text x="87" y="182" fill="#e9f4db" font-size="16" font-weight="700" text-anchor="middle">1 / 3</text>
+        <rect x="21" y="213" width="132" height="31" rx="8" fill="#e2e6d6"/>
+        <circle cx="37" cy="228" r="6" fill="#789060"/>
+        <rect x="51" y="224" width="72" height="7" rx="3.5" fill="#52644b"/>
+        <rect x="21" y="255" width="132" height="30" rx="15" fill="#dcf78d"/>
+        <path d="M82 270H95M91 266L95 270L91 274" stroke="#26382a" stroke-width="1.7" fill="none"/>
+      </g>
+      <g transform="translate(1254 196) rotate(9 62 108)">
+        <rect width="124" height="218" rx="22" fill="#26332b" stroke="#596d54"/>
+        <circle cx="62" cy="83" r="32" fill="#dcf78d"/>
+        <path d="M47 83L58 94L78 72" fill="none" stroke="#26382a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="24" y="139" width="76" height="7" rx="3.5" fill="#b7c6a6"/>
+        <rect x="34" y="157" width="56" height="5" rx="2.5" fill="#657b5c"/>
+        <rect x="23" y="184" width="78" height="13" rx="6.5" fill="#40523a"/>
+      </g>
+      <g fill="#aabd9f" font-size="10" font-weight="700" letter-spacing="1.9">
+        <text x="877" y="480">OBSERVE</text><text x="1093" y="480">CREATE</text><text x="1287" y="480">VERIFY</text>
+      </g>
+      <path d="M846 542H1387" stroke="#354139"/>
+      <text x="846" y="581" fill="#7f957b" font-size="11" letter-spacing="1.4">NATIVE FIRST. EVIDENCE ALWAYS.</text>
+      <text x="1387" y="581" fill="#7f957b" font-size="10" text-anchor="end">STUDY TOOLKIT / 01</text>
+    </g>
+  </g>
+</svg>

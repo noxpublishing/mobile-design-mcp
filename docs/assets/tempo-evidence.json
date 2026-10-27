@@ -1,0 +1,49 @@
+{
+  "schema": "tempo-study-evidence-v1",
+  "capturedAt": "2026-10-27T16:10:47.440Z",
+  "package": "study.mobiledesign.tempo",
+  "apkSha256": "c5b1b4f77a2e28357100f43588b710ae6ecb1497acc8e9124d23310fd7c395bb",
+  "androidRelease": "16",
+  "apiLevel": "36",
+  "display": "Physical size: 1080x2400",
+  "density": "Physical density: 420",
+  "fontScale": "1.0",
+  "animationScale": "1",
+  "buildType": "debug",
+  "capture": "Unedited adb screencap PNGs after UIAutomator idle; status-bar demo clock may be configured separately.",
+  "comparison": "Illustrative single-author redesign of the same one-screen task; not a randomized or blinded benchmark.",
+  "performance": "unmeasured",
+  "realUserStudy": "not-performed",
+  "talkBackTest": "not-performed",
+  "runs": [
+    {
+      "variant": "baseline",
+      "screenshot": {
+        "path": "tempo-baseline.png",
+        "sha256": "f2cece786481615d61963bb073b93dc58145cc4e23f2b7fe4d12aec96cc71299"
+      },
+      "completedScreenshot": null,
+      "assertions": {
+        "initialState": true,
+        "completeReading": true,
+        "undoReading": true
+      }
+    },
+    {
+      "variant": "workflow",
+      "screenshot": {
+        "path": "tempo-workflow.png",
+        "sha256": "d5dd77034c8421619df9cdaaa2b66558c1f783d1405ed27aa50b6a864ff439cc"
+      },
+      "completedScreenshot": {
+        "path": "tempo-workflow-completed.png",
+        "sha256": "a2704e4a8e1a35814729dbb8f57a08550d91458a4f44c323b3e521565a8ccbe3"
+      },
+      "assertions": {
+        "initialState": true,
+        "completeReading": true,
+        "undoReading": true
+      }
+    }
+  ]
+}
