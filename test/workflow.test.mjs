@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, mkdir, readFile, rm, stat, symlink, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, readFile, realpath, rm, stat, symlink, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { installWorkflow } from '../scripts/install-workflow.mjs';
@@ -40,7 +40,7 @@ test('context preflight rejects malformed wrappers and escaping sources without 
 });
 
 test('portable installation creates real skills and client-specific agents without model or permission changes', async () => {
-  const home = await mkdtemp(join(tmpdir(), 'design install '));
+  const home = await realpath(await mkdtemp(join(tmpdir(), 'design install ')));
   try {
     const result = await installWorkflow({ home });
     assert.equal(result.results.filter(item => item.status === 'installed').length, 31);
@@ -67,7 +67,7 @@ test('portable installation creates real skills and client-specific agents witho
 });
 
 test('project-scoped install preserves an unmanaged skill and validates scope', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'design-project-install-'));
+  const root = await realpath(await mkdtemp(join(tmpdir(), 'design-project-install-')));
   try {
     const existing = join(root, '.claude', 'skills', 'mobile-setup'); await mkdir(existing, { recursive: true });
     await writeFile(join(existing, 'SKILL.md'), 'Existing project instruction.');
