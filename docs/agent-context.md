@@ -30,9 +30,7 @@ tree. The installer preserves unmanaged or modified destinations and never chang
 client permission or model settings. Root instruction wrappers link here; preserve
 unrelated instructions in consuming app projects.
 
-The owner's local work must not acquire added licensing gates, feature locks or
-usage limits. This does not grant third-party rights or remove real tool/platform
-requirements. Before any authorized GitHub publication, review the study-only
+Before any authorized GitHub publication, review the study-only
 labeling, license scopes/notices, content rights and publication set; run
 `npm run check:publication` for label consistency and common leaks. It is not a
 legal-clearance certificate. Keep internal evidence and secrets out of publication.

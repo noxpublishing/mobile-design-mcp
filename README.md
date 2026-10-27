@@ -6,11 +6,11 @@
 
 A mobile design toolkit for **Claude Code and Codex**: reference research, purposeful visual systems, **SwiftUI / Jetpack Compose** implementation, independent reviews and explicit UX/performance evidence.
 
-> **For noncommercial studies, learning and research.** Original code uses the [Noncommercial Study License](LICENSE). Marked Apache-2.0 files retain their permissions; the owner's own use is unrestricted by this grant. No runtime license locks. [Rights and scope](docs/usage-rights.md).
+> **For noncommercial studies, learning and research.** Original code uses the [Noncommercial Study License](LICENSE). Marked Apache-2.0 files retain their permissions. No runtime license locks. [Rights and scope](docs/usage-rights.md).
 
 **8 skills · 7 reviewer profiles · 17 MCP tools · Windows / macOS / Linux**
 
-[See the native comparison](#a-small-app-two-design-approaches) · [Install for your client](docs/clients.md) · [Explore the workflow](docs/workflow.md)
+[See the native comparison](#a-small-app-two-design-approaches) · [Usage, commands and triggers](docs/usage.md) · [Install for your client](docs/clients.md) · [Explore the workflow](docs/workflow.md)
 
 This is an early working toolkit. It supports an agent's design work; it does not certify award quality, collect native frame profiles or turn one screenshot into a complete app.
 
