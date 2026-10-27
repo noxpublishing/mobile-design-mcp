@@ -6,7 +6,9 @@ licenses in `LICENSE`, `NOTICE` and `docs/usage-rights.md`.
 
 The runtime contract is `src/server.ts`; persistence is `src/store.ts`;
 reference providers, media, recipes and bounded review packets have separate
-modules. Native examples are authored and uncompiled here. Figma and Rive use
+modules. Motion recipe snippets are authored and have not all been compiled.
+The Tempo Android example has recorded build/capture checks in docs/tempo-study.md.
+Figma and Rive use
 external official connections and are not bundled runtime providers.
 
 Workflow truth is `docs/workflow.md`; client installation is `docs/clients.md`;

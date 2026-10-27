@@ -15,3 +15,9 @@ research/
 **/build/
 local.properties
 *.apk
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.xcarchive
+*.ipa
+.build/
