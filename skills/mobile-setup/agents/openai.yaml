@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile Project Setup"
+  short_description: "Prepare scope, style and a durable project brief"
+  default_prompt: "Use $mobile-setup for this native mobile project."

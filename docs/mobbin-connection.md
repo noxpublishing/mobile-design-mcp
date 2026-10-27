@@ -1,5 +1,10 @@
 # Official Mobbin connection
 
+Credential-file mode checks apply to POSIX hosts. On Windows, Node's chmod does
+not establish an owner-only ACL; keep the library in your protected user profile
+or another appropriately ACL-protected directory. This toolkit does not certify
+Windows credential ACLs. Account permissions and export rights remain separate.
+
 The implementation follows Mobbin's published integration contract, not its private website backend.
 
 - MCP: `https://api.mobbin.com/mcp`, OAuth DCR/PKCE, scope `openid`.

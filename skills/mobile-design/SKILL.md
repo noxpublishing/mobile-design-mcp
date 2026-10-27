@@ -10,6 +10,21 @@ Adapted for native mobile design from the Elephant–Goldfish method; see the pa
 
 Use mobile evidence to build the app the user requested. Keep SwiftUI and Jetpack Compose native: navigation, gestures, typography, safe areas/insets, accessibility, and motion should suit the target platform. A web page in a phone frame is not a native app implementation.
 
+## Focused working modes
+
+Use these companion skills when installed, or read their linked instructions when needed. Load only the relevant mode; a small edit does not require every phase.
+
+| Need | Mode |
+|---|---|
+| New project or consequential scope reset | [mobile-setup](../mobile-setup/SKILL.md): short interview and durable project record; reuse existing answers |
+| README and agent instructions | [mobile-project-docs](../mobile-project-docs/SKILL.md): factual contracts and canonical context behind AGENTS.md/CLAUDE.md |
+| Agreed direction needs an implementable contract | [mobile-design-spec](../mobile-design-spec/SKILL.md) |
+| Selected Figma reference | [mobile-figma](../mobile-figma/SKILL.md): actual nodes, mappings, screenshots and native adaptation |
+| Animation or interactive graphics | [mobile-motion](../mobile-motion/SKILL.md): native code or optional Rive authoring/integration |
+| Consistency after implementation changes | [mobile-design-drift](../mobile-design-drift/SKILL.md) |
+
+Portable specialist reviewer profiles and fresh-context dispatch are defined in [agents.md](../../docs/agents.md). The [client guide](../../docs/clients.md) covers Claude Code/Codex on Windows, macOS and Linux. A profile file or installed skill is not proof that a review or native test ran.
+
 ## Establish the target and available evidence
 
 Read the existing project and the user's brief first. Reuse their platform, stack, product purpose, audience, and required flows; ask only for consequential missing information. In this server, platform filters use `ios` and `android`. SwiftUI is the iOS implementation path; Jetpack Compose is the Android path. Support both when requested, with shared product intent and platform-appropriate interactions.
@@ -57,6 +72,8 @@ Compare final app renders at the target device sizes. Use existing simulator/emu
 Keep one project record naming the native source of truth and selected direction. Use a revision-bound packet for the current scope. The packet builder accepts a project-local manifest and copies only bounded local assets; external provider media are not fetched or mirrored. A discoverability packet withholds the solution rationale, design rules and reference examples. A consistency packet includes the native rules and representative peer components.
 
 Use fresh-context reviewers for independent checks when delegation is available and authorized. Give each only its selected [review lens](references/review-lenses.md), packet and task, without the conversation history or private rationale. Reviewers inspect read-only and return actual execution outcome, evidence-linked findings and missing coverage. If fresh context is unavailable, label that check unavailable; never simulate independent reviewers in the same context.
+
+For blind discoverability, check auto-loaded project instructions, skills and memory as well. Follow the isolation fallback in [agents.md](../../docs/agents.md) when they reveal the solution; a clean conversation alone may not be sufficient.
 
 Route local changes to one relevant reviewer and targeted reruns. Flow changes normally need task/interaction review; broader directions add appropriate visual/accessibility/platform lenses. Default to two correction rounds per bounded scope before surfacing an unresolved decision. That limit controls effort, not the truth of a pass.
 

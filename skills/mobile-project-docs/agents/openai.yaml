@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile Project Docs"
+  short_description: "Maintain factual READMEs and agent instructions"
+  default_prompt: "Use $mobile-project-docs for this native mobile project."

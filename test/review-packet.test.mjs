@@ -37,7 +37,7 @@ test('stale revisions, modified bytes and project path escapes cannot create pas
   f.manifest.evidence[0].revision='build-a';f.manifest.evidence[0].sha256='0'.repeat(64);
   await writeFile(f.manifestPath,JSON.stringify(f.manifest));await assert.rejects(run(),/bytes changed/);
   delete f.manifest.evidence[0].sha256;await writeFile(join(outside,'screen.png'),png);
-  await symlink(join(outside,'screen.png'),join(f.root,'escape.png'));f.manifest.evidence[0].path='escape.png';
+  await symlink(outside,join(f.root,'escape'),process.platform==='win32'?'junction':'dir');f.manifest.evidence[0].path='escape/screen.png';
   await writeFile(f.manifestPath,JSON.stringify(f.manifest));await assert.rejects(run(),/inside the native project/);
  }finally{await rm(f.root,{recursive:true,force:true});await rm(outside,{recursive:true,force:true});}
 });

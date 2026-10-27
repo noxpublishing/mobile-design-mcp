@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mobile-design": {
+      "command": "node",
+      "args": ["/absolute/path/to/mobile-design-mcp/dist/cli.js"]
+    }
+  }
+}

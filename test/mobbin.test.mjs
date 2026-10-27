@@ -28,7 +28,7 @@ test('OAuth tokens use private file permissions; PKCE verifier stays in memory',
   const provider=new MobbinOAuthProvider(root,'http://127.0.0.1:34219/callback');
   provider.saveCodeVerifier('fixture-verifier');assert.equal(provider.codeVerifier(),'fixture-verifier');
   provider.saveTokens({access_token:'fixture-access',token_type:'Bearer'});
-  assert.equal((await stat(provider.path)).mode&0o777,0o600);
+  if(process.platform!=='win32')assert.equal((await stat(provider.path)).mode&0o777,0o600);
   const reopened=new MobbinOAuthProvider(root);assert.equal(reopened.tokens().access_token,'fixture-access');
   assert.throws(()=>reopened.codeVerifier(),/No active/);
   assert.notEqual(provider.expectedState,reopened.expectedState);

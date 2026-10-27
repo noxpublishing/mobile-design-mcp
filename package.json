@@ -11,10 +11,13 @@
     "test",
     "scripts",
     "skills",
+    "agents",
     "docs",
     "examples",
     "tsconfig.json",
     "README.md",
+    "AGENTS.md",
+    "CLAUDE.md",
     "LICENSE",
     "LICENSES",
     "NOTICE"
@@ -28,7 +31,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/cli.js",
-    "test": "npm run build && node --test test/*.test.mjs",
+    "test": "npm run build && node scripts/test.mjs",
+    "workflow:install": "node scripts/install-workflow.mjs",
+    "check:publication": "node scripts/check-publication.mjs",
     "mobbin:login": "node dist/mobbin-login.js",
     "index": "node scripts/index-awards.mjs",
     "smoke": "node scripts/smoke.mjs"

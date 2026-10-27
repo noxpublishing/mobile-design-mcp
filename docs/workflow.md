@@ -5,6 +5,8 @@ This is the shared completion and review contract for the native-design and show
 
 ## Ownership and intake
 
+For a new project use `mobile-setup` to reuse known facts, ask a short targeted interview and maintain one durable project record. Resume it instead of repeating setup on every task. `mobile-project-docs` maintains factual READMEs and thin AGENTS.md/CLAUDE.md entry points; `mobile-design-spec` expands accepted decisions when needed. See [client installation](clients.md) and [specialist reviewer dispatch](agents.md). These are focused working modes, not additional mandatory gates for every edit.
+
 The Elephant is the working agent that keeps the brief and decisions coherent. Goldfish are independent reviewers started with fresh conversation contexts. They receive a selected review packet and their specific lens, not the author's transcript or private reasoning.
 
 Keep the app's existing theme, tokens, components and source assets authoritative. An established project extends those sources unless a deliberate direction decision authorizes changing them. The MCP reference library is not a second token database. A short record in the app project names those authoritative files and records decisions, intentional exceptions and evidence links.
@@ -22,6 +24,8 @@ For a new direction, normally show two or three meaningfully different treatment
 The user can choose, request one bounded revision or combine compatible qualities. Record what that choice fixes and what remains flexible. If no option is suitable, identify the failed criteria before preparing another round. Routine changes reuse the selected reference set; refresh it when the direction or evidence becomes outdated.
 
 Unavailable services are explicit evidence gaps. Do not invent access or copy provider media into an unrestricted repository. Existing-project work can continue from identified local evidence, but missing required inspiration must not be called completed research.
+
+Selected Figma nodes can contribute design intent through `mobile-figma`; record node/variant, actual access and ownership. `mobile-motion` chooses native APIs or optional Rive for the effect, records the state/binding contract and verifies actual output. External tools remain client-connected integrations. See [Figma](figma.md), [Rive](rive.md) and the [motion pipeline](motion.md).
 
 ## 2. Visual system and anti-slop criteria
 
@@ -42,6 +46,8 @@ Existing native theme/component files remain the source of the values. Review pa
 Implement the relevant native screens and task states. Mark journeys as reference, proposal or implemented run. Reference recordings cannot prove that the new app works.
 
 After a change, identify affected semantic roles, tokens, components, assets, screen states and tasks. Render fresh evidence for the affected scope. Update the canonical source, accepted decisions and evidence links together. A local accepted correction should not silently alter the whole direction.
+
+Use `mobile-design-drift` for a requested or materially needed consistency audit across decisions, native sources, renders, motion assets and project documentation. Missing evidence and intentional differences remain distinct from confirmed drift.
 
 Use these default routes:
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile Design Specification"
+  short_description: "Specify native tasks, states and visual contracts"
+  default_prompt: "Use $mobile-design-spec for this native mobile project."

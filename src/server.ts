@@ -42,6 +42,8 @@ export function createMobileServer(root=dataRoot()) {
       capture:{localImport:true,liveDeviceAutomation:false,iosSimulatorHost:'macOS with Xcode required; import captures here'},
       awards:{apple:store.getMeta('refresh:apple'),googlePlay:store.getMeta('refresh:google')},
       awwwards:{connection:'external MCP or web research',availability:'not-checked-by-this-server'},
+      figma:{connection:'official external MCP',endpoint:'https://mcp.figma.com/mcp',availability:'not-checked-by-this-server',skill:'mobile-figma'},
+      rive:{connection:'official external desktop editor MCP',endpoint:'http://127.0.0.1:9791/mcp',editorHostPlatforms:['macOS','Windows'],availability:'not-checked-by-this-server',skill:'mobile-motion',bundledRuntime:false},
       coverage:'Local catalog subset; awards identify references, not current screenshots or measured transitions.'};
   }));
   server.tool('refresh_awards','Fetch official Apple Design Awards and/or the dated Google Play Best of 2025 smartphone-app awards. Stores metadata, not screen libraries.',{

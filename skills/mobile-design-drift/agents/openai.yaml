@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile Design Drift"
+  short_description: "Audit design, source, evidence and document consistency"
+  default_prompt: "Use $mobile-design-drift for this native mobile project."

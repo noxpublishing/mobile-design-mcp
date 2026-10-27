@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile Figma Sources"
+  short_description: "Translate selected Figma evidence into native UI"
+  default_prompt: "Use $mobile-figma for this native mobile project."

@@ -12,6 +12,8 @@ This is an early working toolkit. It supports an agent's design work; it does no
 
 Requires Node.js 22.13 or newer. Video analysis also requires `ffmpeg` and `ffprobe`.
 
+The toolkit targets **Windows, macOS and Linux**, primarily through **Claude Code and Codex**. See [client installation and capability boundaries](docs/clients.md). Native build/editor prerequisites still depend on the target platform.
+
 ```bash
 git clone https://github.com/noxpublishing/mobile-design-mcp.git
 cd mobile-design-mcp
@@ -66,18 +68,24 @@ The app's existing native themes and components remain authoritative. Review sna
 
 | Skill | Purpose |
 |---|---|
+| [mobile-setup](skills/mobile-setup/SKILL.md) | Short initial interview, project scope/style and a durable preparation record |
 | [mobile-design](skills/mobile-design/SKILL.md) | Reference-led native design, independent review and final UX/performance loops |
+| [mobile-project-docs](skills/mobile-project-docs/SKILL.md) | Useful READMEs and consistent AGENTS.md/CLAUDE.md with one canonical project context |
+| [mobile-design-spec](skills/mobile-design-spec/SKILL.md) | Implementation-ready task/state, visual-system and motion contracts |
+| [mobile-design-drift](skills/mobile-design-drift/SKILL.md) | Evidence-based consistency audit across decisions, source, renders and docs |
+| [mobile-figma](skills/mobile-figma/SKILL.md) | Selected Figma context, assets/mappings and native implementation comparison |
+| [mobile-motion](skills/mobile-motion/SKILL.md) | Native animation implementation and optional Rive authoring/integration |
 | [mobile-showcase](skills/mobile-showcase/SKILL.md) | A separate product website using final app screenshots and clips after app completion |
 
-The skills belong to this checkout and refer to its shared workflow documentation. Install them as symlinked skill folders so those references remain available:
+Install all eight skills and seven reviewer definitions for both clients with the portable Node installer:
 
 ```bash
-mkdir -p ~/.agents/skills
-ln -s /absolute/path/to/mobile-design-mcp/skills/mobile-design ~/.agents/skills/mobile-design
-ln -s /absolute/path/to/mobile-design-mcp/skills/mobile-showcase ~/.agents/skills/mobile-showcase
+node scripts/install-workflow.mjs --client both --scope user
 ```
 
-Existing folders are not overwritten by these commands. Reload the client if newly configured tools or skills have not appeared.
+It uses real copies without symlink privileges, preserves unmanaged/modified destinations, and does not change permissions, models or account connections. See [client options](docs/clients.md) for per-project installation and update behavior. Start with `$mobile-setup` in Codex or `/mobile-setup` in Claude Code. The [reviewer profiles](docs/agents.md) are used on relevant evidence in fresh contexts; they do not run merely because they are installed.
+
+The mobile server still exposes 17 tools. Figma and Rive are optional external client connections, documented in [Figma](docs/figma.md) and [Rive](docs/rive.md). Read the [motion pipeline](docs/motion.md) for how references become native code or actual Rive assets and verified app behavior.
 
 ## MCP tools
 

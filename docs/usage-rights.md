@@ -9,7 +9,7 @@ policy and does not establish that a particular use is legally permitted.
 
 | Material | Applicable terms |
 |---|---|
-| Original runtime, tests, scripts, examples and unmarked project documentation | [Noncommercial Study License](../LICENSE): study use, modification and redistribution permitted; commercial use by recipients requires separate permission |
+| Original runtime, tests, scripts, examples, new focused skills, portable agent profiles and unmarked project documentation | [Noncommercial Study License](../LICENSE): study use, modification and redistribution permitted; commercial use by recipients requires separate permission |
 | `skills/mobile-design/SKILL.md`, `skills/mobile-showcase/SKILL.md`, `skills/mobile-design/references/` and `docs/workflow.md` | Apache-2.0, as identified in [NOTICE](../NOTICE); these files retain its permissions, including commercial use |
 | Third-party packages | Their own licenses; consult the installed package notices and lockfile |
 | External references, screenshots, videos, fonts, illustrations, logos and provider responses | Their owners' rights, licenses and applicable service terms; no content license is granted by this repository |
