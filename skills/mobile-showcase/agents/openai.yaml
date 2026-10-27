@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mobile App Showcase"
+  short_description: "Build a website from a finished mobile app design"
+  default_prompt: "Use $mobile-showcase to create a showcase website from my finished app design and final screenshots."

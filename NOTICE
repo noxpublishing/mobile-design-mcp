@@ -1,0 +1,25 @@
+Mobile Design MCP
+
+The TypeScript runtime and original project code are provided under the
+Mobile Design MCP Noncommercial Study License; see LICENSE. This does not
+restrict the rights holder's own local use. Third-party npm dependencies
+retain their respective licenses.
+
+The design workflow instructions in skills/mobile-design/SKILL.md,
+skills/mobile-showcase/SKILL.md, skills/mobile-design/references/, and
+docs/workflow.md adapt the Elephant-Goldfish Model methodology:
+https://github.com/google/elephant-goldfish-model
+Copyright 2026 Google LLC. Licensed under Apache License 2.0.
+See LICENSES/Apache-2.0.txt. These instructions have been modified for native
+iOS/Android design, typography and spacing, UX review, and performance review.
+They are not the upstream EGM skills or personas.
+These Apache-2.0 files retain that license, including its commercial-use
+permissions; the root study license does not override those permissions.
+
+Reference-search workflow inspiration also includes Awwwards-mcp:
+https://github.com/INSANE0777/Awwwards-mcp (MIT, Copyright 2026 Afjal).
+Its server and bundled source are not distributed as part of this runtime.
+
+Mobbin and award-provider content are accessed through their own documented
+services. This repository does not include a mirrored screen library or
+third-party website bundles.

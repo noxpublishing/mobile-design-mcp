@@ -1,0 +1,8 @@
+# Merge this entry into your existing config; keep unrelated entries.
+[mcp_servers.mobile_design]
+command = "node"
+args = ["/absolute/path/to/mobile-design-mcp/dist/cli.js"]
+tool_timeout_sec = 240
+
+# Optional: put provider credentials in the launch environment, not this file.
+# Default library: ~/.local/share/mobile-design-mcp

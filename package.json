@@ -1,0 +1,45 @@
+{
+  "name": "mobile-design-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Evidence-based native mobile design references, flows and motion recipes for SwiftUI and Jetpack Compose.",
+  "license": "SEE LICENSE IN LICENSE",
+  "files": [
+    "dist",
+    "src",
+    "test",
+    "scripts",
+    "skills",
+    "docs",
+    "examples",
+    "tsconfig.json",
+    "README.md",
+    "LICENSE",
+    "LICENSES",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "bin": {
+    "mobile-design-mcp": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "mobbin:login": "node dist/mobbin-login.js",
+    "index": "node scripts/index-awards.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "cheerio": "^1.1.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}

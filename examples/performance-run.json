@@ -1,0 +1,18 @@
+{
+  "schema": "mobile-performance-run-v1",
+  "status": "unmeasured",
+  "appRevision": null,
+  "buildConfiguration": null,
+  "platform": null,
+  "device": null,
+  "os": null,
+  "refreshRateHz": null,
+  "scenario": null,
+  "conditions": { "thermal": null, "cache": null, "network": null },
+  "collector": { "name": null, "version": null },
+  "repetitions": [],
+  "acceptanceCriteria": [],
+  "rawEvidencePaths": [],
+  "measurements": null,
+  "note": "Template only. Populate from actual native runs; this file is not performance evidence."
+}

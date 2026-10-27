@@ -1,0 +1,14 @@
+{
+  "schema": "mobile-design-review-v1",
+  "revision": "replace-with-the-app-build-or-revision",
+  "scope": "local",
+  "task": "Find the primary next action on the welcome screen",
+  "entryContext": "First visit after launching the app",
+  "platform": "ios",
+  "device": { "name": "replace-with-device", "os": "replace-with-version", "textScale": 1 },
+  "direction": "Replace with the accepted visual direction",
+  "designSystemSources": ["Sources/Theme.swift"],
+  "criteria": ["Heading-to-description spacing follows the canonical native theme"],
+  "evidence": [],
+  "gaps": ["Add actual project-local captures and their revision/state before review"]
+}
